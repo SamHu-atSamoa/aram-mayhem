@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onBeforeUnmount } from 'vue'
 import { loadJson } from '../composables/useData'
 import ItemChip from './ItemChip.vue'
 import AugmentCard from './AugmentCard.vue'
@@ -12,6 +12,44 @@ const emit = defineEmits(['close'])
 const detail = ref(null)
 const loading = ref(false)
 const activeBuild = ref(0)
+
+/* While the dialog is open, stop painting the page behind it (see theme.css)
+ * so the browser is not compositing 173 champion images under the scrim.
+ *
+ * Simply setting `overflow: hidden` on the page loses the reader's place, so
+ * this pins the body at a negative offset and restores the exact scroll
+ * position on close. */
+let savedScroll = 0
+
+function setPageLocked(locked) {
+  const html = document.documentElement
+  const body = document.body
+  if (locked) {
+    if (html.classList.contains('dialog-open')) return
+    savedScroll = window.scrollY
+    body.style.position = 'fixed'
+    body.style.top = `-${savedScroll}px`
+    body.style.left = '0'
+    body.style.right = '0'
+    html.classList.add('dialog-open')
+  } else {
+    if (!html.classList.contains('dialog-open')) return
+    html.classList.remove('dialog-open')
+    body.style.position = ''
+    body.style.top = ''
+    body.style.left = ''
+    body.style.right = ''
+    /* While the body was pinned the document had no height, so a scroll
+     * restore would clamp to zero. Force layout back first, then restore —
+     * and once more next frame, because off-screen cards using
+     * content-visibility only get their real height once laid out. */
+    void body.offsetHeight
+    window.scrollTo(0, savedScroll)
+    requestAnimationFrame(() => window.scrollTo(0, savedScroll))
+  }
+}
+watch(() => props.champion, (c) => setPageLocked(!!c))
+onBeforeUnmount(() => setPageLocked(false))
 
 watch(
   () => props.champion,
@@ -153,8 +191,10 @@ const splash = computed(() => props.champion?.splash ?? '')
   align-items: flex-start;
   justify-content: center;
   padding: 40px 16px;
-  background: rgba(6, 10, 18, 0.62);
-  backdrop-filter: blur(3px);
+  /* No backdrop-filter here. This element covers the whole viewport, and the
+     173-card grid sits behind it — blurring that live every frame is what makes
+     opening a champion lock up on real hardware. A solid scrim costs nothing. */
+  background: rgba(6, 10, 18, 0.82);
   overflow-y: auto;
 }
 
