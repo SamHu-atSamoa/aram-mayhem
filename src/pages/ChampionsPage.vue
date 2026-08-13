@@ -8,11 +8,20 @@ import ChampionDialog from '../components/ChampionDialog.vue'
 
 const { data: champions, loading, reload } = useJson('champions.json', [])
 
-/* Overlay live win rates once the snapshot has rendered, if configured. */
+/* Overlay live win rates once the snapshot has rendered, if configured.
+ *
+ * This runs exactly once. `applyLiveStats` mutates the champion objects in
+ * place, so a `triggerRef` is needed to re-render — but `triggerRef` also wakes
+ * this very watcher, and `fetchLiveStats` memoises its promise, so without the
+ * guard the resolve → apply → trigger → resolve cycle spins forever in
+ * microtasks and locks the tab. */
+let overlayDone = false
+
 watch(
   champions,
   (list) => {
-    if (!list?.length) return
+    if (overlayDone || !list?.length) return
+    overlayDone = true
     fetchLiveStats().then((stats) => {
       if (!stats) return
       applyLiveStats(list, stats)
