@@ -162,8 +162,7 @@ img {
 
 /* Set on <html> while the champion dialog is open. The body is pinned in JS
    (see ChampionDialog.vue) so the scroll position survives. */
-html.dialog-open .app-main,
-html.dialog-open .site-announcement {
+html.dialog-open .app-main {
   /* The overlay covers these completely, so stop painting them — the point is
      to not composite 173 champion images underneath a scrim.
      `visibility: hidden` rather than `content-visibility: hidden` because the
