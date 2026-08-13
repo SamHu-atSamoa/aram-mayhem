@@ -15,9 +15,14 @@ compatibility_date = "2026-08-01"
 [assets]
 directory = "./dist/"
 binding = "ASSETS"
-# Hash routing means real paths are always "/", but this keeps any direct
-# path request landing on the app rather than a 404.
-not_found_handling = "single-page-application"
+# Deliberately NOT "single-page-application". The app uses hash routing, so the
+# only real navigation path is "/" and an SPA fallback buys nothing — but it
+# does real harm: it answers *every* unmatched path with index.html and a 200,
+# including stale hashed asset URLs. A browser holding a cached index.html from
+# a previous deploy then receives HTML where it expects JavaScript, fails to
+# parse it as a module, and the app never boots. Letting missing assets 404
+# keeps that failure honest and lets the browser recover.
+not_found_handling = "none"
 # Only API paths invoke the Worker; everything else is served straight from
 # assets without a script execution.
 run_worker_first = [ "/api/*" ]
