@@ -1,7 +1,11 @@
 node_modules/
 dist/
 public/data/
+.wrangler/
 .env
 .env.local
 .DS_Store
 *.log
+
+# transfer scratch — safe to delete
+_to_delete/

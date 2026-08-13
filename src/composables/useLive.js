@@ -10,8 +10,8 @@ import { ref } from 'vue'
  *
  * Where it fetches from, via VITE_LIVE_API:
  *
- *   unset            same-origin `/api/...`, served by the Cloudflare Pages
- *                    Function in functions/api/. No CORS, edge-cached.
+ *   unset            same-origin `/api/...`, served by the Worker in
+ *                    worker/index.js. No CORS, edge-cached.
  *   a full URL       that origin instead (e.g. a standalone Worker)
  *   "off"            disabled — the site makes no third-party requests at all
  *
@@ -54,7 +54,7 @@ export function fetchLiveStats() {
       return byId
     })
     .catch(() => {
-      // No proxy deployed, offline, or upstream down — snapshot stands.
+      // Worker not deployed, offline, or upstream down — snapshot stands.
       liveStatus.value = 'unavailable'
       return null
     })

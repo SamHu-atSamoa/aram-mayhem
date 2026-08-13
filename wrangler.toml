@@ -1,12 +1,23 @@
-# Only needed if you deploy from the command line instead of connecting the
-# repo in the Cloudflare dashboard:
+# Cloudflare Workers configuration.
 #
-#   npm install -D wrangler
-#   npx wrangler pages deploy dist --project-name arammayhem
+# The site deploys as a single Worker: static assets from ./dist, plus the
+# /api/* proxy implemented in worker/index.js.
 #
-# With the dashboard Git integration (the recommended path in the README) this
-# file is unused — Cloudflare reads the build settings from the project instead.
+#   npm run build && npx wrangler deploy
+#
+# Connected to Git in the Cloudflare dashboard, this is what the build and
+# deploy commands use.
 
-name = "arammayhem"
-pages_build_output_dir = "dist"
+name = "aram-mayhem"
+main = "./worker/index.js"
 compatibility_date = "2026-08-01"
+
+[assets]
+directory = "./dist/"
+binding = "ASSETS"
+# Hash routing means real paths are always "/", but this keeps any direct
+# path request landing on the app rather than a 404.
+not_found_handling = "single-page-application"
+# Only API paths invoke the Worker; everything else is served straight from
+# assets without a script execution.
+run_worker_first = [ "/api/*" ]

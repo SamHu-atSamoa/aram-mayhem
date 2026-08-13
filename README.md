@@ -27,7 +27,7 @@ Other scripts:
 
 `dist/` is fully static. Drop it on any CDN, S3-compatible bucket, Netlify or nginx — no
 rewrite rules needed, because routing lives in the URL hash. Deployment instructions for
-Cloudflare Pages are below.
+Cloudflare are below.
 
 ---
 
@@ -106,54 +106,68 @@ snapshot, so item and champion text follow automatically.
 
 ---
 
-## Hosting on Cloudflare Pages
+## Hosting on Cloudflare
 
-The site is designed around Cloudflare Pages: the static build and the `/api` proxy deploy
-together as one project, and the free tier comfortably covers a site shared with friends.
+The site deploys as a single Cloudflare Worker: the built SPA is served from static
+assets, and `worker/index.js` handles `/api/*` as a cached proxy to the upstream stats API.
+Cloudflare has folded Pages into Workers, so this is the current path for new accounts.
 
 ### 1. Push to GitHub
 
 ```bash
-git init && git add -A
-git commit -m "ARAM Mayhem guide"
-git branch -M main
-git remote add origin https://github.com/<you>/arammayhem.git
+git remote add origin https://github.com/<you>/aram-mayhem.git
 git push -u origin main
 ```
 
-### 2. Connect the repo in Cloudflare
+### 2. Create the Worker
 
-In the Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to
-Git**, pick the repo, and set:
+Cloudflare dashboard → **Compute → Workers & Pages** → **Create application** → import from
+Git, pick the repo, and set:
 
 | Setting | Value |
 | --- | --- |
-| Framework preset | None |
+| Project name | `aram-mayhem` |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
+| Deploy command | `npx wrangler deploy` |
 
-Deploy. You get `https://arammayhem.pages.dev` — send that to your friends. Every push to
-`main` redeploys automatically.
+Deploy. You get `aram-mayhem.<your-subdomain>.workers.dev` — send that to your friends. Every
+push to `main` redeploys.
 
-To use your own domain, open the project → **Custom domains** → **Set up a domain**. If the
-domain's DNS is already on Cloudflare, the record is created for you; otherwise follow the
-CNAME instructions shown.
+For your own domain, open the Worker → **Settings → Domains & Routes → Add custom domain**.
+
+### How the routing works
+
+`wrangler.toml` does the wiring:
+
+```toml
+main = "./worker/index.js"
+
+[assets]
+directory = "./dist/"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = [ "/api/*" ]
+```
+
+`run_worker_first` means only `/api/*` invokes the Worker script — every other request is
+served straight from static assets with no script execution, so the site costs almost nothing
+to run. Requests that do reach the Worker are checked against an allowlist of read-only
+upstream endpoints; anything else gets a 404 rather than being relayed.
 
 ### 3. Live data
 
-Two mechanisms work together, and they cover different things.
+Two mechanisms work together, covering different things.
 
-**Live win rates — instant, on every page load.** `functions/api/[[path]].js` deploys with the
-site as a Pages Function, so the browser fetches `/api/public/hextech-aram/heroes/bootstrap`
-on *your own domain*: no CORS, no extra service, nothing to configure. Win rate and rank are
-numbers, so they need no translation and are overlaid onto the champion grid as soon as they
-arrive. The champion list shows a green **live win rates** badge when this succeeds and a
-grey **snapshot** badge when it falls back.
+**Live win rates — on every page load.** The browser fetches
+`/api/public/hextech-aram/heroes/bootstrap` on your own domain, so there is no cross-origin
+request and nothing to configure. Win rate and rank are numbers, so they need no translation
+and are overlaid onto the champion grid as soon as they arrive. The champion list shows a
+green **live win rates** badge when this succeeds and a grey **snapshot** badge when it falls
+back.
 
 Responses are cached at Cloudflare's edge for 10 minutes, so no matter how many people are
 browsing, the upstream site sees at most a handful of requests an hour. That matters — it is
-someone else's API, and hammering it per-visitor would be both rude and a good way to get
-blocked.
+someone else's API, and per-visitor traffic would be both rude and a good way to get blocked.
 
 **Everything else — refreshed daily.** `.github/workflows/refresh-data.yml` runs
 `scripts/capture.mjs` on a schedule (06:00 UTC, 19:00 Apia), re-pulls builds, augment
@@ -161,11 +175,11 @@ recommendations, guides and the message board, and commits the snapshot. That co
 a Cloudflare rebuild on its own. Enable it under the repo's **Actions** tab; run it manually
 any time from **Actions → Refresh data → Run workflow**.
 
-This split exists for a reason: the numbers can be live because they are language-free,
-while the prose has to pass through translation, which is a build-time step. When the upstream
-site adds text that has no translation yet, the build falls back to the original Chinese and
-lists it in `public/data/missing-translations.json`, summarised in the workflow run. Add the
-English to `data/raw/translations.json` and it picks it up on the next build.
+This split exists for a reason: the numbers can be live because they are language-free, while
+the prose has to pass through translation, which is a build-time step. When the upstream site
+adds text that has no translation yet, the build falls back to the original Chinese and lists
+it in `public/data/missing-translations.json`, summarised in the workflow run. Add the English
+to `data/raw/translations.json` and it is picked up on the next build.
 
 Worth knowing: upstream refreshes its stats in bulk roughly weekly — every champion in the
 capture shared a single `statsUpdateTime`. So a daily rebuild is already ahead of the source,
@@ -173,19 +187,18 @@ and the live overlay mostly protects against being caught out right after a patc
 
 ### Turning live data off
 
-Set `VITE_LIVE_API=off` as an environment variable in the Cloudflare project (**Settings →
-Environment variables**) and the site makes no third-party requests at all — pure snapshot.
-Setting it to a full URL points the overlay at some other origin instead, if you ever want to
-run the proxy separately.
+Set `VITE_LIVE_API=off` as a build variable on the Worker (**Settings → Variables**) and the
+site makes no upstream requests at all — pure snapshot. Setting it to a full URL points the
+overlay at some other origin instead.
 
 ### Local development
 
-`npm run dev` has no Pages Function behind it, so the overlay reports **snapshot**. To
-exercise the proxy locally, build first and serve through Wrangler:
+`npm run dev` runs Vite alone, with no Worker behind it, so the overlay reports **snapshot**.
+To exercise the proxy and asset routing exactly as deployed:
 
 ```bash
 npm run build
-npx wrangler pages dev dist
+npx wrangler dev
 ```
 
 ---
@@ -198,8 +211,7 @@ npx wrangler pages dev dist
 - **Dependent on an upstream API.** Both the live overlay and the scheduled capture read a
   third party's endpoints. If they change paths, add authentication, or block the traffic, the
   live badge goes grey and the refresh workflow fails — the site keeps working on its last
-  good snapshot. `scripts/capture.mjs` and `functions/api/[[path]].js` are where you would
-  adjust.
+  good snapshot. `scripts/capture.mjs` and `worker/index.js` are where you would adjust.
 - **Translation lag.** New upstream prose appears in Chinese until it is translated; see
   `public/data/missing-translations.json`.
 - **Guide count.** 20 guides and 170 message threads were captured; the original site may
