@@ -1,0 +1,69 @@
+name: Refresh data
+
+# Re-pulls the upstream stats snapshot and commits it. Cloudflare Pages is
+# connected to this repo, so the commit triggers a rebuild and deploy on its
+# own — this workflow deliberately does not deploy anything itself.
+#
+# The snapshot lives in the repo so the site always builds, even if the
+# upstream API is unreachable during a later build.
+
+on:
+  schedule:
+    # 06:00 UTC daily = 19:00 in Apia (UTC+13)
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Capture upstream data
+        run: node scripts/capture.mjs
+
+      - name: Rebuild dataset
+        run: npm run data
+
+      - name: Report untranslated strings
+        run: |
+          FILE=public/data/missing-translations.json
+          if [ -f "$FILE" ]; then
+            TOTAL=$(node -p "require('./$FILE').total")
+            if [ "$TOTAL" != "0" ]; then
+              echo "### $TOTAL untranslated string(s) appeared upstream" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "These fall back to the original Chinese until translated." >> $GITHUB_STEP_SUMMARY
+              echo '```json' >> $GITHUB_STEP_SUMMARY
+              cat "$FILE" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+            else
+              echo "All strings translated." >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+
+      - name: Commit refreshed snapshot
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw
+          if git diff --staged --quiet; then
+            echo "No upstream changes today."
+          else
+            git commit -m "chore: refresh upstream data snapshot"
+            git push
+          fi

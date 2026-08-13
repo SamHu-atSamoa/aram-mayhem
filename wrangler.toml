@@ -1,0 +1,12 @@
+# Only needed if you deploy from the command line instead of connecting the
+# repo in the Cloudflare dashboard:
+#
+#   npm install -D wrangler
+#   npx wrangler pages deploy dist --project-name arammayhem
+#
+# With the dashboard Git integration (the recommended path in the README) this
+# file is unused — Cloudflare reads the build settings from the project instead.
+
+name = "arammayhem"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-08-01"
