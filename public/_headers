@@ -1,0 +1,8 @@
+# Icons are content-addressed by champion/item/augment id and only change when
+# Riot ships new art, so they can be cached hard. The data files change on each
+# rebuild, so they revalidate.
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/data/*
+  Cache-Control: public, max-age=300, must-revalidate

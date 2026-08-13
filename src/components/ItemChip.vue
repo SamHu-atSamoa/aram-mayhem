@@ -15,7 +15,14 @@ const open = ref(false)
     @mouseleave="open = false"
     @click="open = !open"
   >
-    <img class="item-chip__icon" :src="item.icon" :alt="item.name" loading="lazy" />
+    <img
+      class="item-chip__icon"
+      :src="item.icon"
+      :alt="item.name"
+      width="64"
+      height="64"
+      loading="lazy"
+    />
     <span class="item-chip__name">{{ item.name }}</span>
 
     <div v-if="open" class="item-chip__tooltip">

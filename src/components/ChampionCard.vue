@@ -18,9 +18,12 @@ const loaded = ref(false)
         :class="{ 'is-loaded': loaded }"
         :src="champion.icon"
         :alt="champion.name"
+        width="120"
+        height="120"
         loading="lazy"
         decoding="async"
         @load="loaded = true"
+        @error="loaded = true"
       />
     </div>
 
@@ -74,11 +77,15 @@ const loaded = ref(false)
 
 .champion-avatar {
   width: 100%;
+  height: auto;
   aspect-ratio: 1;
   border: 1.6px solid var(--panel-raised);
   border-radius: 12px;
   object-fit: cover;
-  opacity: 0;
+  /* A visible tile from the first frame: the card is clickable whether or not
+     the portrait has arrived, rather than fading in from nothing. */
+  background: var(--panel-raised);
+  opacity: 0.35;
   transition: opacity 0.24s ease;
 }
 

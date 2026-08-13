@@ -17,7 +17,14 @@ const open = ref(false)
     @mouseleave="open = false"
     @click="open = !open"
   >
-    <img class="augment__icon" :src="augment.icon" :alt="augment.name" loading="lazy" />
+    <img
+      class="augment__icon"
+      :src="augment.icon"
+      :alt="augment.name"
+      width="64"
+      height="64"
+      loading="lazy"
+    />
 
     <div class="augment__body">
       <span class="augment__name">{{ augment.name }}</span>

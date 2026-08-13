@@ -22,7 +22,9 @@ Other scripts:
 | Command | What it does |
 | --- | --- |
 | `npm run data` | Rebuilds `public/data/` from the raw snapshot in `data/raw/` |
-| `npm run build` | Runs `data`, then produces a production bundle in `dist/` |
+| `npm run assets` | Downloads the 477 champion/item/augment icons into `public/img/` |
+| `npm run build` | Runs both of the above, then bundles into `dist/` |
+| `npm run capture` | Re-pulls the upstream snapshot into `data/raw/` (needs internet) |
 | `npm run preview` | Serves the built `dist/` locally |
 
 `dist/` is fully static. Drop it on any CDN, S3-compatible bucket, Netlify or nginx — no
@@ -88,14 +90,32 @@ Run `npm run data` after changing any of them.
 
 ### Images
 
-No images are hotlinked from the original site. Icons are rewritten at build time to Riot's
-own CDNs:
+Icons are **downloaded at build time and served from your own origin**, not hot-linked from
+Riot's CDN. This is the single biggest thing affecting how fast the site feels: the champion
+grid alone renders 173 icons at once, and fetching those cross-origin costs a DNS lookup, a
+TLS handshake and 173 round trips to a CDN that may be nowhere near the visitor. Served as
+Worker assets they come off Cloudflare's edge over one multiplexed connection, and
+`public/_headers` marks them `immutable` for a year — champion and item art changes only when
+Riot ships new art, so a repeat visit re-downloads nothing.
 
-- champion portraits and splash art, and item icons → Data Dragon
-- ARAM augment icons → CommunityDragon
+How it works:
 
-A small number of augments publish only a `_small` icon; `src/main.js` installs a global
-image-error handler that retries those once at the smaller size.
+1. `build-data.mjs` emits local paths (`/img/champion/Vayne.png`) and records where each one
+   came from in `public/data/asset-manifest.json`.
+2. `fetch-assets.mjs` downloads all 477 icons into `public/img/`, skipping any already
+   present, so repeat builds are nearly free.
+3. Vite copies `public/` into `dist/`, and they deploy as ordinary static assets.
+
+Sources are Data Dragon for champion portraits and item icons, CommunityDragon for augment
+icons. Augments use the 64px variant rather than 256px — they render at 26px, so the larger
+file was four times the bytes for no visible gain.
+
+If a download fails, that icon's dataset reference is rewritten back to its upstream URL, so
+the site still shows it — just more slowly. The build never breaks over an icon.
+
+The one image still fetched remotely is the champion portrait in the detail dialog, loaded
+on demand when you open a champion. It uses Riot's `loading` art (~40 KB) rather than the
+full splash (~1 MB); `index.html` preconnects to Data Dragon so that request starts warm.
 
 ### Refreshing the snapshot
 

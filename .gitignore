@@ -9,3 +9,6 @@ public/data/
 
 # transfer scratch — safe to delete
 _to_delete/
+
+# downloaded at build time by scripts/fetch-assets.mjs
+public/img/

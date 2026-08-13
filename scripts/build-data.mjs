@@ -35,21 +35,44 @@ const DDRAGON_VERSION = snapshot.english.version
 const DD = `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img`
 const CDRAGON = 'https://raw.communitydragon.org/latest/game'
 
-const championIcon = (id) => `${DD}/champion/${id}.png`
+/* Icons are served from our own origin rather than hot-linked. The champion
+ * grid alone is 173 images: fetching those cross-origin from Riot's CDN is the
+ * single slowest thing the page can do, especially far from its edges. Instead
+ * we emit local paths here, record the upstream source in an asset manifest,
+ * and scripts/fetch-assets.mjs downloads them at build time so they ship as
+ * edge-served, same-origin, HTTP/2-multiplexed assets.
+ *
+ * Anything that fails to download falls back to its upstream URL, so a hiccup
+ * degrades performance rather than breaking the build. */
+const assetManifest = {}
+
+function localAsset(localPath, remoteUrl) {
+  if (!remoteUrl) return ''
+  assetManifest[localPath] = remoteUrl
+  return localPath
+}
+
+const championIcon = (id) => localAsset(`/img/champion/${id}.png`, `${DD}/champion/${id}.png`)
+
+/* The full splash is ~1 MB per champion. The portrait ("loading") art is ~40 KB
+ * and reads the same once cropped into the dialog banner. */
 const championSplash = (id) =>
-  `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg`
-const itemIcon = (id) => `${DD}/item/${id}.png`
+  `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${id}_0.jpg`
+
+const itemIcon = (id) => localAsset(`/img/item/${id}.png`, `${DD}/item/${id}.png`)
 
 /** "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Eureka_small.png"
- *  -> "https://raw.communitydragon.org/latest/game/assets/ux/cherry/augments/icons/eureka_large.png" */
-function augmentIcon(id, size = 'large') {
+ *  -> ".../assets/ux/cherry/augments/icons/eureka_small.png"
+ *  Rendered at 26px, so the 64px "small" variant is plenty — the 256px "large"
+ *  one was four times the bytes for no visible gain. */
+function augmentIcon(id, size = 'small') {
   const path = cherry[String(id)]?.augmentSmallIconPath
   if (!path) return ''
-  return (
-    CDRAGON +
-    '/' +
-    path.replace('/lol-game-data/assets/', '').toLowerCase().replace('_small.png', `_${size}.png`)
-  )
+  const rel = path
+    .replace('/lol-game-data/assets/', '')
+    .toLowerCase()
+    .replace('_small.png', `_${size}.png`)
+  return localAsset(`/img/augment/${id}.png`, `${CDRAGON}/${rel}`)
 }
 
 /* ------------------------------------------------------------------ helpers */
@@ -344,6 +367,7 @@ write('meta.json', {
   guideCount: guides.length,
   messageCount: messages.length,
 })
+write('asset-manifest.json', assetManifest)
 write('champions.json', champions)
 write('guides.json', guides)
 write('messages.json', messages)
@@ -370,5 +394,6 @@ if (missingTotal) {
 console.log(
   `built: ${champions.length} champions, ${Object.keys(heroDetails).length} detail files, ` +
     `${guides.length} guides, ${messages.length} messages, ` +
+    `${Object.keys(assetManifest).length} icons to localise, ` +
     `${Object.keys(augmentIndex).length} augments, ${Object.keys(itemIndex).length} items`
 )

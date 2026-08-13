@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "data": "node scripts/build-data.mjs",
-    "dev": "npm run data && vite",
-    "build": "npm run data && vite build",
-    "preview": "vite preview"
+    "assets": "node scripts/fetch-assets.mjs",
+    "prepare-build": "npm run data && npm run assets",
+    "dev": "npm run prepare-build && vite",
+    "build": "npm run prepare-build && vite build",
+    "preview": "vite preview",
+    "capture": "node scripts/capture.mjs"
   },
   "dependencies": {
     "vue": "^3.5.13",
