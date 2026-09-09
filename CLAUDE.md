@@ -12,10 +12,10 @@ Static Vue 3 SPA with hash routing, deployed as a single Cloudflare Worker.
 
 | | |
 | --- | --- |
-| Live | https://aram-mayhem.aleclin123.workers.dev |
+| Live | https://aram-mayhem.sam123.workers.dev |
 | Repo | https://github.com/SamHu-atSamoa/aram-mayhem |
 | Local | `D:\arammayhem` |
-| Cloudflare | Worker `aram-mayhem`, account subdomain `aleclin123.workers.dev` |
+| Cloudflare | Worker `aram-mayhem`, account subdomain `sam123.workers.dev` |
 | Upstream data | `https://test.cchappy.top/api/public/...` (third party, not ours) |
 
 ## Commands
@@ -111,9 +111,18 @@ coming — so every one of these blocks is conditional. Do not assume they are p
 - **A hidden browser tab does not composite or fire `requestAnimationFrame`.** Any
   performance measurement taken in a background tab is meaningless — check
   `document.visibilityState` first.
-- **The workers.dev host is `aleclin123.workers.dev`, not `samoa`.** This file claimed `samoa`
-  for a while; that hostname does not exist, so the site looked dead (NXDOMAIN) while the Worker
-  was in fact deployed and healthy. Check the URL before concluding a deploy failed.
+- **Confirm the workers.dev host before declaring a deploy broken.** This file claimed `samoa`
+  for a while, which never existed. The account subdomain was really `aleclin123`, so the site
+  looked dead (NXDOMAIN) while the Worker was deployed and perfectly healthy. It has since been
+  renamed to `sam123`. `wrangler deploy` prints the authoritative URL on every run — trust that
+  over any hostname written down here.
+- **Renaming the workers.dev subdomain is a dashboard-only, account-wide action.** The API
+  refuses it (`10036 Account already has an associated subdomain`); only
+  *Compute (Workers) → Overview → Subdomain* in the dashboard can. It renames every Worker on
+  the account at once, kills the old hostname instantly, and leaves the new one failing TLS
+  (`SSL_ERROR_NO_CYPHER_OVERLAP`, `SEC_E_ILLEGAL_MESSAGE`) for a while until Cloudflare issues
+  a certificate for the new wildcard. That gap is normal — wait it out, do not go debugging
+  the Worker.
 - **This network fails TLS on large downloads over HTTP/2.** `git fetch` dies with
   `SEC_E_DECRYPT_FAILURE` and npm with `ERR_SSL_CIPHER_OPERATION_FAILED`, both intermittently.
   The trap: **npm silently skips optional dependencies whose download fails**, so
