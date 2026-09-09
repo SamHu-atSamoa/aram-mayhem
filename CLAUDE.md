@@ -12,10 +12,10 @@ Static Vue 3 SPA with hash routing, deployed as a single Cloudflare Worker.
 
 | | |
 | --- | --- |
-| Live | https://aram-mayhem.samoa.workers.dev |
+| Live | https://aram-mayhem.aleclin123.workers.dev |
 | Repo | https://github.com/SamHu-atSamoa/aram-mayhem |
 | Local | `D:\arammayhem` |
-| Cloudflare | Worker `aram-mayhem`, account subdomain `samoa.workers.dev` |
+| Cloudflare | Worker `aram-mayhem`, account subdomain `aleclin123.workers.dev` |
 | Upstream data | `https://test.cchappy.top/api/public/...` (third party, not ours) |
 
 ## Commands
@@ -27,7 +27,11 @@ npm run data       # regenerate public/data/ from data/raw/
 npm run assets     # download the 477 icons into public/img/
 npm run capture    # re-pull upstream into data/raw/ (needs internet)
 npx wrangler dev   # serve the built site *with* the Worker (needed to test /api)
+npx wrangler deploy # manual deploy: uploads dist/ + worker/index.js, prints the live URL
 ```
+
+**Deploying by hand** needs `npx wrangler login` first (interactive browser OAuth; credentials
+land in `%APPDATA%\xdg.config\.wrangler`). Then `npm run build && npx wrangler deploy`.
 
 `npm run dev` alone does not run the Worker, so the live-stats overlay always reports
 "snapshot" locally. Use `npx wrangler dev` to exercise `/api`.
@@ -107,6 +111,16 @@ coming — so every one of these blocks is conditional. Do not assume they are p
 - **A hidden browser tab does not composite or fire `requestAnimationFrame`.** Any
   performance measurement taken in a background tab is meaningless — check
   `document.visibilityState` first.
+- **The workers.dev host is `aleclin123.workers.dev`, not `samoa`.** This file claimed `samoa`
+  for a while; that hostname does not exist, so the site looked dead (NXDOMAIN) while the Worker
+  was in fact deployed and healthy. Check the URL before concluding a deploy failed.
+- **This network fails TLS on large downloads over HTTP/2.** `git fetch` dies with
+  `SEC_E_DECRYPT_FAILURE` and npm with `ERR_SSL_CIPHER_OPERATION_FAILED`, both intermittently.
+  The trap: **npm silently skips optional dependencies whose download fails**, so
+  `npm i -D wrangler` "succeeds" while omitting the 33 MB `@cloudflare/workerd-windows-64`
+  binary, and every wrangler command then dies with a confusing `workerd` error. Fix:
+  `curl -L --http1.1 <tarball-url> -o pkg.tgz && npm i --no-save pkg.tgz`. Keep that binary out
+  of `package.json` — it is platform-specific and would break Cloudflare's Linux build.
 - **Be gentle with the upstream API.** It is someone else's site. The Worker caches responses
   at the edge for 10 minutes and only proxies an allowlist of read-only endpoints; the capture
   script limits concurrency and pauses between requests. Keep both.
