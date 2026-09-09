@@ -24,6 +24,8 @@ const open = ref(false)
       loading="lazy"
     />
     <span class="item-chip__name">{{ item.name }}</span>
+    <!-- Only starting items carry a count, and only when you buy more than one. -->
+    <span v-if="item.quantity > 1" class="item-chip__qty">×{{ item.quantity }}</span>
 
     <div v-if="open" class="item-chip__tooltip">
       <div class="item-chip__tooltip-head">
@@ -75,6 +77,13 @@ const open = ref(false)
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.item-chip__qty {
+  flex: none;
+  color: var(--text-dim);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .item-chip__tooltip {

@@ -759,6 +759,46 @@
   "2078": {
    "name": "Chain Reaction",
    "desc": "If a target knocked back by 【?】 hits another champion, both are knocked up and take damage. On colliding with terrain, the knockup duration is extended and they take bonus damage."
+  },
+  "1187": {
+   "name": "Flashbang",
+   "desc": "Your Flash sets off an explosion that deals damage and slows (resets on death)."
+  },
+  "1358": {
+   "name": "Pinball",
+   "desc": "Your Mark gains Ability Haste and deals bonus true damage.\nWhen the snowball bounces off a wall it grows in size and damage, and its cooldown is reduced."
+  },
+  "1379": {
+   "name": "Upgrade Sword of Blossoming Dawn",
+   "desc": "Gain 100% Attack Speed.\nYour attacks on champions increase the healing from Sword of Blossoming Dawn by 250%."
+  },
+  "1392": {
+   "name": "Holy Snowball",
+   "desc": "Mark gains 100 Ability Haste.\nYou are briefly immune to damage after dashing with Mark.\nIf you don't have a Mark, you gain one."
+  },
+  "2032": {
+   "name": "Shark Bait",
+   "desc": "For a few seconds after you die, a shark gnaws on every nearby enemy. You can still move while dead to line the shark up."
+  },
+  "2034": {
+   "name": "Shark Tempest",
+   "desc": "Sharks orbit your Mark, damaging and slowing nearby enemies. When your Mark hits a champion, they are caught in a shark tempest!"
+  },
+  "2140": {
+   "name": "Upgrade Ravenous Hydra",
+   "desc": "Your ability hits on enemies now trigger Cleave. Increases Ravenous Hydra's Life Steal.\nGain 500 gold."
+  },
+  "2141": {
+   "name": "Ultra Hydra",
+   "desc": "Whenever you complete a Hydra item, gain a Tiamat.\nQuest: own Titanic Hydra, Ravenous Hydra and Profane Hydra.\nReward: gain Ultra Hydra."
+  },
+  "2143": {
+   "name": "Upgrade Sundered Sky",
+   "desc": "Reduces Sundered Sky's per-target cooldown and heals you based on your missing Health.\nGain bonus gold."
+  },
+  "2157": {
+   "name": "Upgrade Death's Dance",
+   "desc": "Gain bonus stats.\nDamage you take is bled out over time instead of dealt up front.\nAfter a takedown, instantly heal for more Health."
   }
  },
  "guides": [
@@ -921,6 +961,54 @@
    "gameplay": "> Built entirely around Mystic Punch: Master Yi's Q lands multiple attack instances, and each one cuts your cooldowns. Once Q's real cooldown is pushed under about 7.5 seconds, you can recast it the moment you land, which keeps you untargetable for long stretches.\n\n## How It Works\n\nMystic Punch does this:\n\n> When an on-hit effect lands, all of your ability cooldowns are reduced by a flat 1.25 seconds.\n\nMaster Yi's Q, Alpha Strike, is a multi-hit ability, and in the current ARAM Mayhem patch those multiple damage instances trigger Mystic Punch back to back.\n\nOne full Q plus a follow-up auto attack shaves off roughly 7.5 seconds of cooldown in total.\n\nSo as long as you push Q's real cooldown under 7.5 seconds, you get:\n\n> Q to go untargetable\n> → the multi-hit damage triggers Mystic Punch\n> → land and add one auto attack\n> → Q's cooldown is wiped completely\n> → cast Q again immediately\n\n## Core Augments\n\n### ![augment:Mystic Punch](https://www.cchappy.top/hks/assets/hextech-aram/augments/latest/1058.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nThe irreplaceable core of the entire build.\n\nWithout Mystic Punch, Master Yi can still lower Q's cooldown with auto attacks, but chaining Qs back to back is basically impossible.\n\nIf you see Mystic Punch, you can lock in the infinite Q build right there.\n\n### ![augment:Bread And Butter](https://www.cchappy.top/hks/assets/hextech-aram/augments/latest/1103.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nGives a big chunk of Q-specific ability haste, making it the most direct secondary core.\n\nWith it, Q easily reaches the cooldown threshold the infinite loop needs, which frees up item slots for damage and survivability.\n\n### ![augment:Dashing](https://www.cchappy.top/hks/assets/hextech-aram/augments/latest/1019.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nMaster Yi's Q counts as a dash, so it gets a very large amount of ability-specific haste.\n\nIt doesn't just help the infinite Q come online — it also shortens Q's dead time when Mystic Punch hasn't fully triggered yet.\n\n### ![augment:Recursion](https://www.cchappy.top/hks/assets/hextech-aram/augments/latest/1068.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nStraight-up Ability Haste, simple and reliable.\n\nIf you already have Mystic Punch but your item haste is still short, Recursion is a perfect supplement.\n\n### ![augment:Infinite Recursion](https://www.cchappy.top/hks/assets/hextech-aram/augments/latest/1388.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nGives Ability Haste up front and keeps growing as you pick up takedowns.\n\nMaster Yi cleans up teamfights easily, so your haste keeps climbing into the late game.\n\n### ![augment:Purist - Caster](https://www.cchappy.top/hks/assets/hextech-aram/augments/latest/2018.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nConverts attack speed into Ability Haste.\n\nMaster Yi wants a lot of attack speed anyway and his ultimate grants more, so this covers both auto attack frequency and Q's cooldown at once.\n\nThis route does lean more on the right item and augment combination, though, so it's less consistent than Bread And Butter or Dashing.\n\n## Recommended Build\n\nThe build for infinite Q Master Yi has three jobs:\n\n1. Provide enough Ability Haste\n2. Solve the mana cost of casting Q constantly\n3. Make sure you don't get locked down or bursted the instant Q ends\n\nRecommended items:\n\n1. Hubris\n2. Essence Reaver\n3. Spear of Shojin\n4. Black Cleaver\n5. Death's Dance\n6. Endless Hunger\n\nThe build isn't completely fixed — adjust it based on how much Ability Haste you've already picked up.\n\n### Essence Reaver\n\nOne of the most important utility items in this build.\n\nSpamming Q drains mana fast. Without mana sustain you can meet the cooldown requirement and still be unable to cast because you're dry.\n\nEssence Reaver gives you:\n\n- Attack damage\n- Crit\n- Ability Haste\n- Mana back on auto attacks\n\nMaster Yi has to add an auto attack every time he lands from Q anyway, so the mana refund triggers easily.\n\n### Spear of Shojin\n\nProvides a lot of basic ability haste, which visibly cuts Q's listed cooldown.\n\nMaster Yi casts Q, W, and E constantly, so he also gets good mileage out of the item's ramping damage.\n\nIf you didn't get a Q-specific haste augment, Spear of Shojin is a high priority.\n\n### Black Cleaver\n\nProvides attack damage, health, and Ability Haste.\n\nQ's multiple damage instances stack the armor shred quickly. Against several fighters or a real frontline, Cleaver improves both your survivability and your sustained damage.\n\n### Death's Dance\n\nInfinite Q doesn't mean you're actually invincible.\n\nMaster Yi touches down briefly at the end of every Q, and if he gets locked down or focused there, he can still die on the spot.\n\nDeath's Dance spreads out burst damage and heals you on takedowns, which suits chaining kills in teamfights.\n\n### Hubris\n\nGood in games where you can reliably pick up early kills.\n\nOnce Master Yi is online he chains cleanup kills easily, and Hubris keeps adding attack damage, boosting both Q and your auto attacks.\n\nIf the early game goes badly and you can't stack Hubris reliably, prioritize steadier haste or survivability items instead.\n\n### Endless Hunger\n\nProvides attack damage and extra basic ability cooldown reduction, which makes the Q loop even more consistent.\n\nIf your augments already gave you enough Ability Haste, you can swap it for another damage or defensive item.\n\n## Adjusting the Build\n\n### Not Enough Haste\n\nPrioritize:\n\n- Spear of Shojin\n- Black Cleaver\n- Death's Dance\n- Other high Ability Haste items\n\nThe goal is to push Q's listed cooldown under 7.5 seconds.\n\n### Haste Already Covered\n\nYou can cut one pure haste item and add:\n\n- Infinity Edge\n- The Collector\n- Blade of the Ruined King\n- Maw of Malmortius\n- Mercurial Scimitar\n\nDon't keep mindlessly stacking haste once you've met the infinite Q requirement, or you'll run into a damage problem.\n\n### Enemy Has a Lot of Crowd Control\n\nPrioritize:\n\n- Mercury's Treads\n- Mercurial Scimitar\n- Maw of Malmortius\n- Death's Dance\n- Tenacity augments\n\nWhat infinite Q Master Yi fears isn't heavy damage — it's getting locked down the instant he lands.\n\n## Summary\n\nThe core formula for infinite Q Master Yi:\n\n> Mystic Punch\n> ＋ Q's multiple attack instances\n> ＋ one auto attack on landing\n> ＋ Q's real cooldown pushed under about 7.5 seconds\n> ＋ Essence Reaver to solve mana\n> ＋ survivability items so you don't get deleted on landing\n\nOnce it's online, Master Yi just repeats:\n\n> Q → land, auto → Q → land, auto\n\nwhich keeps him untargetable for long stretches and lets him chain cleanup kills inside the enemy formation.",
    "authorName": "",
    "authorLocation": ""
+  },
+  {
+   "id": "guide-6ee11bac",
+   "title": "Blade Waltz Vi",
+   "summary": "Casting Blade Waltz on other champions while Vi's R is in flight (remember to tap Blade Waltz repeatedly) triggers Assault and Battery's knock-up and several instances of collision damage.",
+   "gameplay": "Casting Blade Waltz on other champions while Vi's R is in flight (remember to tap Blade Waltz repeatedly) triggers Assault and Battery's knock-up and several instances of collision damage.",
+   "authorName": "Weiming",
+   "authorLocation": "Dingcheng, Changde, Hunan"
+  },
+  {
+   "id": "guide-2dce3d78",
+   "title": "W + R Delete Build",
+   "summary": "Bel'Veth's W has a huge Ability Power ratio — 150%.",
+   "gameplay": "This augment set works because Bel'Veth's W and R both have very high Ability Power ratios. At three items a single W already deletes an enemy squishy, and since she gains Attack Speed as she scales and her passive deals true damage, she can still chew through the frontline in the late game.",
+   "authorName": "Fuyao",
+   "authorLocation": "Guangzhou"
+  },
+  {
+   "id": "guide-0190801c",
+   "title": "One-Shot Caitlyn",
+   "summary": "Jeweled Gauntlet plus Upgrade Infinity Edge — once it comes online, one shot deletes a squishy.",
+   "gameplay": "Jeweled Gauntlet and Upgrade Infinity Edge are both must-picks. Caitlyn's ultimate scales with crit chance and crit damage, so once the build is finished a single shot deletes squishy ADCs and mages — 3000+ damage, which even a magic shield won't hold. Worth adding a damage amp item or two.",
+   "authorName": "Nameless Veteran ARAM Player",
+   "authorLocation": "Wuhan"
+  },
+  {
+   "id": "guide-a43d3f73",
+   "title": "Spirit Bomb Lee Sin: Endless Team-Wide Shielding",
+   "summary": "Use Rite of Ruin to create extra shields, then keep generating new heal and shield events with Lee Sin's W, the omnivamp on his second W, Moonstone Renewer and Echoes of Helia. Spirit Bomb fills up fast and its team-wide shield fires again and again.",
+   "gameplay": "## The Core Interaction\n\nThe key combination is:\n\n- **Spirit Bomb**\n- **Rite of Ruin**\n- **Lee Sin's W**\n\nRite of Ruin has an effect that is easy to overlook:\n\n> When you cast an ability, it has a chance to give you or a targeted ally an extra shield.\n\nAnd Spirit Bomb reads that extra shield as a **brand new shield event**.\n\nSo when Lee Sin W's an ally, it is not just the W shield:\n\n> W's own shield\n> → Rite of Ruin's extra shield\n> → the extra shield stacks Spirit Bomb again\n\nOnce Moonstone Renewer, Echoes of Helia and friends come online, the same W produces even more heal and shield events, and the stacking rate climbs further.\n\nThe end result:\n\n> One W stacks a pile of Spirit Bomb charges\n> → the bar fills fast\n> → Spirit Bomb's team-wide shield goes off\n\n## The Second W Is the Hidden Core\n\nLee Sin's second W grants heavy omnivamp for roughly 4 seconds.\n\nOnce it is active:\n\n> Q deals damage → you heal\n> E deals damage → you heal\n> R deals damage → you heal\n\nEvery one of those omnivamp heals also counts toward Spirit Bomb.\n\nAt the same time, casting Q, E or R can proc Rite of Ruin's extra shield.\n\nSo you get two stacking streams at once:\n\n> An ability deals damage\n> → the second W's omnivamp heals you\n> → Spirit Bomb stacks\n>\n> and that same ability procs Rite of Ruin\n> → you gain an extra shield\n> → Spirit Bomb stacks again\n\nWhich means W is not Lee Sin's only way to stack Spirit Bomb.\n\nMeasured in game:\n\n- **W on an ally: about 5 stacks**\n- **Each Q cast: about 2 stacks**\n- **E: about 2 stacks**\n- **R: about 2 stacks**\n\nThat is already well ahead of what a normal enchanter manages.\n\n## Recommended Build\n\n### ![item:Rite Of Ruin](https://cdn.cchappy.top/hks/assets/hextech-aram/items/3430.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\nThe absolute core item.\n\nIts job is not really the crit — it is:\n\n> cast an ability\n> → an extra shield appears\n> → Spirit Bomb counts it as its own separate shield event\n\nWithout Rite of Ruin the whole playstyle stacks far more slowly.\n\n### ![item:Moonstone Renewer](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226617.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\nMoonstone spreads your heals and shields onward to other allies.\n\nSo a single W can produce:\n\n> the W shield\n> ＋ the Rite of Ruin shield\n> ＋ Moonstone's extra shield or heal\n\nAll of which push Spirit Bomb's stacking rate higher again.\n\n### ![item:Echoes of Helia](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226620.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\nHelia likewise generates extra effects whenever you heal an ally.\n\nPaired with Moonstone:\n\n> Spirit Bomb's real stacking rate gets close to three times what it was.\n\nSo:\n\n> **Rite of Ruin ＋ Moonstone ＋ Helia**\n\nare the three most important items in the build.\n\n## Why Are the Last Three Items All Heal and Shield Power?\n\nThe follow-up picks: ![item:Redemption](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223107.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Mikael's Blessing](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223222.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Dawncore](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226621.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\nTheir purpose is not to add more procs, but to stack:\n\n> **heal and shield power**\n\nBetween them they add a large amount of healing and shielding amplification.\n\nWhat Spirit Bomb ultimately fires is a team-wide shield, so the more heal and shield power you have, the thicker each one lands.\n\nWhich gives you:\n\n> the first three items stacking like mad\n> ＋ the last three making every team-wide shield bigger\n\n## Summary\n\nThe whole playstyle is one loop:\n\n> W shields an ally\n> → Rite of Ruin adds an extra shield\n> → Moonstone and Helia spread more heals and shields\n> → Spirit Bomb stacks rapidly\n> → the team-wide shield fires\n> → the second W heals you off Q/E/R damage\n> → those heals and Rite of Ruin keep stacking Spirit Bomb\n> → W comes back up and you do it again\n\nThe end effect:\n\n> **A W roughly every 2 seconds. The more you cast, the more shields; the more shields, the faster Spirit Bomb fires — a near-endless team-wide shielding loop.**\n",
+   "authorName": "",
+   "authorLocation": ""
+  },
+  {
+   "id": "guide-fb9d3a9f",
+   "title": "Infinite Q Crit Blitzcrank",
+   "summary": "Blitzcrank's E carries a 200% total Attack Damage ratio, and with BONK!'s extra damage on top, a crit build lets you hook someone in and one-punch a squishy.",
+   "gameplay": "## Core Mechanics\n\nBlitzcrank's E empowers his next auto attack, dealing heavy physical damage and knocking the target up.\n\nSo this playstyle really has two core interactions.\n\n### Infinite Q Crowd Control\n\nAfter you cast R with ![augment:Ultimate Awakening](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1349.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1):\n\n* Q, W and E are refreshed immediately\n* You gain a large amount of basic Ability Haste for the next 15 seconds\n\nThe correct sequence:\n\n> Q to pull → E for the punch → R refreshes Q/E → Q again → E again\n\nDo not Q and then immediately R without using E first, or you waste one of the refreshes.\n\nWith the cooldown augments below, Q reaches an absurd cadence:\n\n* ![augment:Infinite Recursion](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1388.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n* ![augment:Recursion](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1068.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n* ![augment:Pursuit of Haste](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2100.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n* ![augment:Bread And Butter](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1103.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n* ![augment:Purist - Caster](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2018.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\n### Crit E Burst\n\nBlitzcrank's E has a huge total Attack Damage ratio, and ![augment:BONK!](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2111.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1) amplifies that special attack even further.\n\nThe full burst:\n\n> Q lands on a squishy\n> → E empowers the auto\n> → BONK! adds its damage\n> → crit ＋ Infinity Edge ＋ armor penetration scale it further\n> → one punch, one kill\n\nSo this build does not kill with Q:\n\n> **Q catches them, E is the actual burst.**\n\n## Core Augments\n\n![augment:BONK!](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2111.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nThe single most important damage augment for the crit build.\n\nOnce Blitzcrank procs it with E, it adds damage on top of an already heavily amplified auto attack.\n\nOnly fully commit to the one-punch crit build once you have BONK!.\n\n### ![augment:Ultimate Awakening](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1349.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nThe heart of the infinite Q build.\n\nR not only silences in an area, it instantly refreshes your basic abilities and keeps Q and E cycling.\n\nRecommended combo:\n\n> Q → E → R → Q → E\n\n### ![augment:Spell Split](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2072.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nMostly there to widen Q's coverage and hit rate.\n\nThe hook splits on contact or at maximum range, so one Q cuts off far more escape angles.\n\nIts real value is:\n\n> it makes people much easier to drag back\n\nrather than simply adding Q damage.\n\n## Alternative Augments\n\n### Bread And Butter\n\nStraight Ability Haste on Q.\n\nCombined with Ultimate Awakening it compresses the hook cooldown further.\n\n### Pursuit of Haste\n\nIf the quest empowers Q, this cuts the cooldown further still — ideal if you want back-to-back hooks.\n\n### Infinite Recursion / Recursion\n\nSimple, direct Ability Haste, raising how often you can use Q and E.\n\n### Purist - Caster\n\nConverts Attack Speed into Ability Haste.\n\nWith it, Trinity Force and other attack speed items also contribute cooldown reduction.\n\n### Tooth Fairy\n\nAn excellent fit for Blitzcrank's mixed damage.\n\nTooth Fairy gives:\n\n* Armor penetration: strengthens E and your crit autos\n* Flat magic penetration: strengthens Q and R\n\nIf the stacks get high, the whole burst improves noticeably.\n\n### Jeweled Gauntlet\n\nLets your abilities crit.\n\nSince you are already stacking crit chance, Q and R gain extra value too.\n\n## Recommended Build\n\nCore items:\n\n1. ![item:Infinity Edge](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223031.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n2. ![item:Essence Reaver](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223508.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n3. ![item:The Collector](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226676.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n4. ![item:Lord Dominik's Regards](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223036.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n5. ![item:Hubris](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226697.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n6. ![item:Axiom Arc](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226696.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\nYou do not have to copy all six — adjust to your augments and the enemy comp.\n\n### Crit Core\n\nPrioritise:\n\n> Essence Reaver\n> → The Collector\n> → Infinity Edge\n\nThey provide crit, Attack Damage and armor penetration, which directly scale E's one-punch burst.\n\n### Against High Armor\n\nAdd:\n\n> Lord Dominik's Regards\n\nE is primarily physical damage, so heavy armor noticeably blunts the one-shot.\n\n### When You Are Ahead Early\n\nConsider:\n\n> Hubris\n\nThe stacked Attack Damage gets multiplied again by E's high total AD ratio.\n\n### To Strengthen the Ultimate Awakening Loop\n\nConsider:\n\n> Axiom Arc\n\nTakedowns refund ultimate cooldown, so the next Ultimate Awakening comes back sooner.\n\nOther options: ![item:Trinity Force](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223078.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Stormrazor](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223095.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Voltaic Cyclosword](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226699.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Dusk and Dawn](https://cdn.cchappy.top/hks/assets/hextech-aram/items/222510.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Profane Hydra](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226698.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Fiendhunter Bolts](https://cdn.cchappy.top/hks/assets/hextech-aram/items/222512.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\n## Playing It\n\n### Basic Burst\n\nMost recommended:\n\n> Q connects\n> → E empowers the auto and knocks up\n> → R silences and refreshes your abilities\n> → Q again\n> → E again\n\nThat uses Ultimate Awakening's refresh in full.\n\n### You Can Pre-Cast E\n\nIf you are confident Q will land:\n\n> pre-cast E → Q pulls them in → auto immediately\n\nThey eat the empowered punch the instant they arrive.\n\nBut a missed Q wastes E, so do not do it every time.\n\n### During Ultimate Awakening\n\nOnce you are in the high-haste window, do not just spam Q.\n\nBetter rhythm:\n\n> Q to pull\n> → E to knock up\n> → reposition\n> → next Q\n> → pull the next target\n\nRapid hooks plus rapid knock-ups are what makes this window so strong.\n\n## Target Selection\n\nHook first:\n\n* Squishy marksmen\n* Mages\n* Champions with no dash\n* Targets who have already used their escape\n\nDo not casually hook:\n\n* High-armor tanks\n* Heavy bruisers\n* Strong engage champions\n* Anyone who will delete your whole team once pulled in\n\nCrit Blitzcrank is very fragile himself.\n\n> **Hooking the wrong target is more dangerous than missing entirely.**\n\n## Good Matchups\n\nWorks well when:\n\n* The enemy team has a lot of squishies\n* The enemy has few dashes\n* Your team has another frontline\n* You can get BONK! or Ultimate Awakening early\n* Enemy armor is low\n* Your team needs someone to pick off the back line\n\n## Bad Matchups\n\nStruggles when:\n\n* The enemy has many tanks and heavy bruisers\n* You are your team's only frontline\n* The enemy stacks armor\n* The enemy has plenty of spell shields\n* The enemy counter-engages well\n* Your Q accuracy is poor\n\nIn those games, forcing full crit tends to leave you unable to survive *or* kill anything.\n\n## Summary\n\nTwo mechanics stacked on each other:\n\n> Ultimate Awakening\n> → R refreshes Q/E\n> → large amounts of basic Ability Haste\n> → high-frequency Q plus high-frequency E crowd control\n\nand at the same time:\n\n> Q drags a squishy back\n> → E empowers the auto with a huge total AD ratio\n> → BONK! adds damage\n> → crit, Infinity Edge and armor penetration multiply it\n> → one-punch kill\n\nWhich comes down to:\n\n> **Q brings them to you, E sends them away.**\n",
+   "authorName": "Hextech Huohuo",
+   "authorLocation": "Shenzhen"
+  },
+  {
+   "id": "guide-c76753f6",
+   "title": "AP Dive-Bomb Zeri",
+   "summary": "Ride Mark straight into the enemy group and land a huge area-of-effect magic burst with R.",
+   "gameplay": "## Core Mechanics\n\nAP Zeri's burst does not come from Q. It comes from:\n\n- **the fully charged right-click**\n- **the area damage the moment R is cast**\n\nZeri's charged right-click has a very high Ability Power ratio and adds magic damage based on the target's maximum Health; the instant R activates carries a very high Ability Power ratio too.\n\nSo the basic burst is:\n\n> have the charged right-click ready\n> → enter on Mark\n> → R to blow up multiple targets\n> → charged right-click on their carry\n> → Zhonya's to survive, or E to get out\n\nUnlike AD Zeri:\n\n> AD Zeri wants sustained Q damage after R\n> AP Zeri wants the single instant of R plus the charged right-click\n\n## Core Augments\n\n### ![augment:Echo Cast](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2062.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nIf it empowers R, it is an absurdly strong roll for this build.\n\nAfter you cast R, a copy casts R again, so you get:\n\n> your own R\n> ＋ the copy's R\n> → two rounds of area magic burst\n\nWatch your cursor direction when you use it, so the copy covers the enemy group too.\n\n### ![augment:Jeweled Gauntlet](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1048.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nLets ability damage crit, which suits AP Zeri perfectly.\n\nZeri's right-click counts as ability damage, so it simultaneously boosts:\n\n- R\n- the charged right-click\n- W\n- E-related damage\n\nThis is not about turning Zeri into a traditional crit ADC — it raises the ceiling on her AP burst.\n\n### ![augment:Ultimate Revolution](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1088.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nGives you another R right after casting one.\n\nThe simplest burst:\n\n> enter on Mark\n> → R\n> → second R\n> → charged right-click\n> → Zhonya's\n\nThe tighter the enemy grouping, the better it pays.\n\n### ![augment:Purist - Caster](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2018.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nMainly raises how often you can cast.\n\nIt converts Attack Speed into Ability Haste, so the Attack Speed Zeri gains after R also turns into cooldown value.\n\nIt leans toward:\n\n> casting R more often\n\nrather than making a single burst bigger.\n\nIf you have already solved your ultimate cooldown with Ultimate Revolution, Eureka or similar, there is no need to sacrifice much Ability Power for Caster.\n\n## Alternative Augments\n\n### ![augment:It's Killing Time](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1211.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nA great fit for the dive-bomb style.\n\nIt marks enemies after you cast R, records the damage you deal afterwards, and detonates again at the end.\n\nZeri can do exactly that:\n\n> R\n> → charged right-click\n> → item damage\n> → It's Killing Time detonates again\n\nEffectively a second burst phase.\n\n### ![augment:Eureka](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1030.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nThe more Ability Power you have, the more Ability Haste you get.\n\nAP Zeri already stacks Rabadon's, Shadowflame and other high-AP items, so you get both:\n\n> Ability Power for the burst\n> ＋ Ability Power converted into Ability Haste\n> → R comes back faster\n\n### ![augment:Ult Bot](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2118.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nFor taking the playstyle to its extreme.\n\nIt sacrifices your basic ability cooldowns to heavily boost ultimate haste.\n\nIf the plan for the game is:\n\n> stay alive purely to Mark in and cast R\n\nthen it pays off handsomely.\n\n### ![augment:Giant Slayer](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1195.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nGood when the enemy has plenty of tanks, bruisers and high-Health champions.\n\nThe charged right-click already deals maximum-Health damage, so Giant Slayer pushes your frontline damage further.\n\n### ![augment:Tooth Fairy](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2083.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nTooth Fairy's flat magic penetration suits AP Zeri very well.\n\nZeri's:\n\n- R\n- charged right-click\n- W\n\nare mostly magic damage, so once the stacks build the burst improves noticeably.\n\n## Recommended Build\n\nCore items: ![item:Malignance](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223118.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Shadowflame](https://cdn.cchappy.top/hks/assets/hextech-aram/items/224645.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Rabadon's Deathcap](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223089.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Void Staff](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223135.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Zhonya's Hourglass](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223157.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Lich Bane](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223100.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\n## A Note on Experimental Hexplate\n\nIf you have Purist - Caster, this item creates a nice extra interaction.\n\nThe Attack Speed you gain after R converts into Ability Haste through Caster:\n\n> Attack Speed after R\n> → Caster converts it to Ability Haste\n> → your next round of abilities comes back faster\n\nSo with Caster it is worth considering as a utility item.\n\nWithout Caster, its Attack Damage stats do little for pure AP Zeri, so it is low priority.\n\n## Good Matchups\n\nWorks well when:\n\n- The enemy has plenty of squishies\n- The enemy likes to group up\n- Your team already has a reliable AD carry\n- Someone else on your team handles wave clear\n- You have frontline or crowd control to create Mark opportunities\n- You get Jeweled Gauntlet, Ultimate Revolution or Echo Cast early\n\nThe ideal case is enemy marksmen and mages standing close together, so one Mark-and-R hits several of them at once.\n\n## Bad Matchups\n\nDo not force it when:\n\n- The enemy has many tanks and bruisers\n- Your team is already full AP\n- Your team lacks wave clear\n- Your team lacks sustained damage\n- The enemy has very strong crowd control and counter-engage\n- You have no Ability Power, damage amp or R-related augments at all\n\nAP Zeri's biggest weakness:\n\n> **Her burst is enormous, but her sustained damage and wave clear are clearly worse than AD Zeri's.**\n\nSo treat it as a specialised playstyle for the right augments and the right comp, rather than converting to AP every game.\n\n## Summary\n\nAP dive-bomb Zeri is about compressing all of your damage into the few seconds after you enter:\n\n> charge the right-click before the fight\n> → Mark into the enemy group\n> → R for a wide magic burst\n> → charged right-click to finish their carry\n> → Ultimate Revolution / Echo Cast for extra R casts\n> → Zhonya's to stall, then E out\n\nThe core idea:\n\n> **R blows up the team, the charged right-click deletes the carry.**\n",
+   "authorName": "Player from Jinhua",
+   "authorLocation": "Jinhua"
   }
  ],
  "tips": {
@@ -1178,7 +1266,39 @@
   "额外技能不吃眩晕": "The extra casts don't apply the stun.",
   "香炉换": "Swap it in for Ardent Censer.",
   "魔切": "Muramana.",
-  "魔切+青龙刀": "Muramana + Titanic Hydra."
+  "魔切+青龙刀": "Muramana + Titanic Hydra.",
+  "尊过来的没有用不触发- -": "The ones brought over don't count — it won't proc - -",
+  "优先级最高，出飓风、电刀": "Highest priority — build Runaan's Hurricane and Statikk Shiv.",
+  "来自闸总:ewqea秒触发扳机炼狱": "Courtesy of Zha: E-W-Q-E-A procs Triggered Inferno instantly.",
+  "不会掉锻造器": "Won't drop Stat Anvils.",
+  "必拿：出卢登": "Must-pick — build Luden's.",
+  "bug不会刷新技能": "Bugged — it doesn't refresh your abilities.",
+  "Q不能提升评级，非常难触发": "Q can't raise the grade, so this is very hard to proc.",
+  "飞镖直接尿分叉打不中面前": "The extra shuriken spray off to the sides and miss anything right in front of you.",
+  "E完人后平A不到": "After you E someone you can't land the auto.",
+  "有子弹才能捡魂": "You need a bullet loaded to pick the soul up.",
+  "三段q不能减CD": "The third Q cast doesn't reduce the cooldown.",
+  "必拿：补飓风+电刀": "Must-pick — follow it with Runaan's Hurricane + Statikk Shiv.",
+  "缺蓝可出": "Worth building if you're short on mana.",
+  "可提前出，后期换水银鞋": "Fine to rush; swap to Mercury's Treads later.",
+  "触发不了": "You can't proc it.",
+  "会和被动重叠，很垃圾。": "Overlaps with his passive — pretty useless.",
+  "平A和Q都能触发": "Both autos and Q proc it.",
+  "没用没用": "Useless. Completely useless.",
+  "Q不能反复触发": "Q can't proc it over and over.",
+  "优先级最高": "Highest priority.",
+  "触发火龙魂情况下 老练狙神不触发": "Skilled Sniper doesn't proc while you have Infernal Soul.",
+  "没有伤害": "Deals no damage.",
+  "不叠血怒": "Doesn't stack his bleed.",
+  "一个R全部起飞": "One R and the whole enemy team goes flying.",
+  "出火炬+面具": "Build Blackfire Torch + Abyssal Mask.",
+  "不能开着W接近 会被W打没的": "Don't walk in with W active — your W attacks will eat it.",
+  "出肉，然后和回城联动": "Build tanky, then combo it with your recall.",
+  "有升级可出": "Worth building if you have the upgrade.",
+  "必拿，很强": "Must-pick, very strong.",
+  "种子只触发一次": "Seeds only proc it once.",
+  "第二段会把人弹开 摸不到人": "The second cast knocks them away, so you can't reach them.",
+  "邪修玩法出肉": "Off-meta build — go tanky."
  },
  "misc": {
   "buildNames": {
@@ -1212,7 +1332,12 @@
    "肉坦流": "Full Tank Build",
    "贴膜流": "Enchanter Support Build",
    "辅助流出装": "Support Build",
-   "钢门出装": "Unkillable Tank Build"
+   "钢门出装": "Unkillable Tank Build",
+   "无限大": "Infinite Ult",
+   "AP恶心流": "AP Cheese Build",
+   "肉小鱼": "Tank Fizz",
+   "暴击": "Crit",
+   "无限Q": "Infinite Q"
   },
   "groupNames": {
    "AD出装": "AD Build",
@@ -1259,7 +1384,20 @@
    "虚幻武器出装": "Ethereal Weapon Build",
    "辅助出装": "Support Build",
    "辅助流出装(7级无地形专家)": "Support Build (no Terrain'd at level 7)",
-   "钢门出装": "Unkillable Tank Build"
+   "钢门出装": "Unkillable Tank Build",
+   "肉出装": "Tank Build",
+   "功能出装": "Utility Build",
+   "辅助装": "Support Items",
+   "珠光出装": "Jeweled Gauntlet Build",
+   "连锁反应出装": "Chain Reaction Build",
+   "大法师出装": "Archmage Build",
+   "攻速流": "Attack Speed Build",
+   "暴击流出装": "Crit Build",
+   "特效流": "On-Hit Build",
+   "邦！出装": "BONK! Build",
+   "双烧出装": "Double Burn Build",
+   "卢登出装": "Luden's Build",
+   "暴击装": "Crit Items"
   },
   "notes": [
    {
@@ -1441,8 +1579,69 @@
     "hero": "Gragas",
     "build": "build-1779756835572-0",
     "en": "If you get Ethereal Weapon or Tooth Fairy early, or the enemy team is all poke champs, you can play AP; otherwise just play tank."
+   },
+   {
+    "hero": "Kayle",
+    "build": "player-1e5e4d2b",
+    "en": "Mystic Punch is the core. One version leans on autos to cut the cooldown, keeping the ult under 50s for permanent uptime; the other stacks flat cooldown to get it under 25s, which also gives you a permanent ult."
+   },
+   {
+    "hero": "TahmKench",
+    "build": "build-1779533654260-0",
+    "en": "Play Tahm Kench as a poke champion, then go straight into Ability Power later. With Goliath or Tank Engine, a single Q can lick up half the screen."
+   },
+   {
+    "hero": "Sylas",
+    "build": "player-f23792a9",
+    "en": "Take the alternative if you have Marksmage; otherwise just run the first build."
+   },
+   {
+    "hero": "MasterYi",
+    "build": "player-084ea368",
+    "en": "Use the alternative with Double Tap.\nPurist - Caster build:\nRunaan's Hurricane, Wit's End, Fiendhunter Bolts, Blade of the Ruined King, Terminus, Essence Reaver."
+   },
+   {
+    "hero": "Vayne",
+    "build": "player-9dab33d7",
+    "en": "If Dual Wield is all you have, take the alternative; with Double Tap just run the first build.\nBONK! build:\nEssence Reaver, Voltaic Cyclosword, The Collector, Lord Dominik's Regards, Infinity Edge, Experimental Hexplate."
+   },
+   {
+    "hero": "Blitzcrank",
+    "build": "build-1779613579707-0",
+    "en": "Blitzcrank doesn't brawl well — build utility items."
+   },
+   {
+    "hero": "Kaisa",
+    "build": "build-1779786344096-0",
+    "en": "Kai'Sa's win rate is far too low right now and her range is too short. Just play AP poke, unless the enemy team is beefy and you need to deal with the frontline."
+   },
+   {
+    "hero": "Belveth",
+    "build": "build-1779946049224-0",
+    "en": "Bel’Veth is very strong late now that she has been reworked. If you pick up Typhoon or Double Tap you can go for the crit items below."
    }
-  ]
+  ],
+  "mechanismNotes": {
+   "变僵尸后，可以一次触发两次": "Once he turns into a zombie it procs twice in one go.",
+   "开大途中死亡，大招不会消失": "If you die mid-ult, the ult still goes off.",
+   "使用大招蓄力不释放，可以白嫖符文效果，且技能CD也能返还": "Charge the ult without releasing it and you get the augment effect for free, plus the cooldown back.",
+   "开Q后，一个平A叠十层": "After you pop Q, a single auto stacks it ten times.",
+   "和彩色双刀流一样的效果": "Same effect as the prismatic Dual Wield.",
+   "当Q技能急速达到100+时，蓄力Q可以无限刷盾": "Once Q is at 100+ Ability Haste, charging Q generates shields endlessly.",
+   "人马QW可以快速叠层": "Hecarim's Q and W stack it quickly.",
+   "人马W衔接Q和A，能快速打出S评级": "Chain Hecarim's W into Q and autos to hit an S grade fast.",
+   "飞升一次会刷新二段R": "Each ascension refreshes the second cast of R.",
+   "下马状态回城会立刻上马": "Recalling while dismounted puts you straight back on the mount.",
+   "飞升一次，多一个老婆": "Every ascension gets you one more Maiden.",
+   "Q中人可以吃到两次Q的伤害": "A target caught by Q takes the Q damage twice.",
+   "近战多可以无限套盾": "With enough melee allies you can shield endlessly.",
+   "第一段Q有持续5秒的流血效果，不用二段引爆可以一直触发顺劈，出装可以来个【灰烬】": "The first Q applies a 5-second bleed; skip the second cast and it keeps proccing Cleave. Bami's Cinder is a good pickup.",
+   "暴击书加灵魄炸弹无限套盾": "Rite of Ruin plus Spirit Bomb shields forever.",
+   "铁男被动打出来可以秒s": "Land Mordekaiser's passive and you hit an S instantly.",
+   "可用Q+三环触发最大伤害": "Use Q plus the third ring to hit max damage.",
+   "复制体W是满层豪意值": "The clone's W comes out at full Grit.",
+   "阵亡后可以立即刷新R的冷却": "Dying immediately refreshes your R cooldown."
+  }
  },
  "messages": [
   {

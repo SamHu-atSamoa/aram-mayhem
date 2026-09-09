@@ -25,6 +25,7 @@ const tr = raw('translations.json')
 
 const enChampions = snapshot.english.champions
 const enItems = snapshot.english.items
+const enSummoners = snapshot.english.summoners || {}
 const DDRAGON_VERSION = snapshot.english.version
 
 /* ------------------------------------------------------------------ assets
@@ -60,6 +61,11 @@ const championSplash = (id) =>
   `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${id}_0.jpg`
 
 const itemIcon = (id) => localAsset(`/img/item/${id}.png`, `${DD}/item/${id}.png`)
+
+/* Summoner spell icons live under a different Data Dragon path than items, and
+ * are keyed by the spell's asset name ("SummonerFlash.png") rather than its id. */
+const spellIcon = (imageFull) =>
+  imageFull ? localAsset(`/img/spell/${imageFull}`, `${DD}/spell/${imageFull}`) : ''
 
 /** "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Eureka_small.png"
  *  -> ".../assets/ux/cherry/augments/icons/eureka_small.png"
@@ -142,13 +148,22 @@ const trTips = tr.tips || {}
 const trAug = tr.augments || {}
 const trBuildNames = tr.misc?.buildNames || {}
 const trGroupNames = tr.misc?.groupNames || {}
+const trMechanisms = tr.misc?.mechanismNotes || {}
 const trNotes = new Map((tr.misc?.notes || []).map((n) => [`${n.hero}::${n.build}`, n.en]))
 
 /* Anything the upstream site adds after the last translation pass arrives in
  * Chinese. Rather than dropping it, fall back to the original text and record
  * it, so a scheduled refresh can report exactly what needs translating. */
 const CJK = /[一-鿿]/
-const missing = { augments: [], tips: [], buildNames: [], groupNames: [], notes: [], guides: [] }
+const missing = {
+  augments: [],
+  tips: [],
+  buildNames: [],
+  groupNames: [],
+  notes: [],
+  guides: [],
+  mechanismNotes: [],
+}
 
 function noteMissing(bucket, value) {
   if (value && CJK.test(value) && !missing[bucket].includes(value)) missing[bucket].push(value)
@@ -202,6 +217,42 @@ function mapAugment(a) {
   }
 }
 
+/* Upstream v3.3.6 added opening builds and summoner spell picks. The item
+ * side reuses mapItem, so the tooltip, stats and price come out identical to
+ * every other item on the page; only the "buy 2 of these" count is extra. */
+function mapStartingItem(it) {
+  return { ...mapItem(it), quantity: it.quantity ?? 1 }
+}
+
+/** Riot's own English names, keyed by the asset name upstream already sends. */
+function mapSummonerSpell(sp) {
+  const en = Object.values(enSummoners).find((s) => s.id === sp.key)
+  return {
+    id: sp.id,
+    key: sp.key,
+    name: en?.name || sp.name,
+    icon: spellIcon(en?.image?.full || sp.imageFull),
+    desc: en?.description || '',
+  }
+}
+
+/* Champion-level augment quirks ("after you turn into a zombie this procs
+ * twice"). The augment itself is already translated elsewhere, so only the
+ * hand-written note needs a pass. */
+function mapMechanism(m) {
+  const t = trAug[String(m.augmentId)]
+  const official = cherry[String(m.augmentId)]
+  const en = trMechanisms[m.note]
+  if (!en) noteMissing('mechanismNotes', m.note)
+  return {
+    augmentId: m.augmentId,
+    name: t?.name || official?.nameTRA || m.name,
+    icon: augmentIcon(m.augmentId),
+    rarity: RARITY[m.rarity] || 'silver',
+    note: en || m.note || '',
+  }
+}
+
 /* ------------------------------------------------------------------ heroes */
 
 const champions = snapshot.bootstrap.data.champions.map((c) => {
@@ -233,6 +284,7 @@ for (const [id, h] of Object.entries(snapshot.heroes)) {
     tier: cfg.tier,
     updateTime: cfg.updateTime,
     statsUpdateTime: cfg.statsUpdateTime,
+    mechanisms: (cfg.specialMechanisms || []).map(mapMechanism),
     balance: (h.balanceAdjustments || []).map((b) => ({
       label: b.label || b.name || '',
       value: b.value ?? b.text ?? '',
@@ -246,6 +298,18 @@ for (const [id, h] of Object.entries(snapshot.heroes)) {
       optionalGroupName: translatedName(trGroupNames, 'groupNames', b.optionalItemGroupName),
       coreItems: b.coreItems.map(mapItem),
       optionalItems: b.optionalItems.map(mapItem),
+      startingItems: (b.startingItems || []).map(mapStartingItem),
+      spells: (b.summonerSpells || []).map(mapSummonerSpell),
+      /* itemGroups is upstream's generalised replacement for the core/optional
+       * pair. Today it usually arrives as a two-entry shim with ids
+       * "legacy-core"/"legacy-optional", but authors can now add further groups
+       * (Vayne has a third), which the old two-slot shape simply cannot hold.
+       * Render from here and keep the pair above as the fallback. */
+      itemGroups: (b.itemGroups || []).map((g) => ({
+        id: g.id,
+        title: translatedName(trGroupNames, 'groupNames', g.title),
+        items: (g.items || []).map(mapItem),
+      })),
       silver: b.silverAugments.map(mapAugment),
       gold: b.goldAugments.map(mapAugment),
       prismatic: b.prismaticAugments.map(mapAugment),
@@ -344,7 +408,10 @@ for (const h of Object.values(heroDetails)) {
 const itemIndex = {}
 for (const h of Object.values(heroDetails)) {
   for (const b of h.builds) {
-    for (const it of [...b.coreItems, ...b.optionalItems]) {
+    /* startingItems and itemGroups can name items that never appear in the
+     * core/optional pair, so index them too or their icons go missing. */
+    const grouped = b.itemGroups.flatMap((g) => g.items)
+    for (const it of [...b.coreItems, ...b.optionalItems, ...b.startingItems, ...grouped]) {
       if (!itemIndex[it.id]) itemIndex[it.id] = { id: it.id, name: it.name, icon: it.icon }
     }
   }

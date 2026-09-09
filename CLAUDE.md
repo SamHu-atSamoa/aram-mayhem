@@ -64,6 +64,27 @@ and augment names from CommunityDragon, so those are official, not translated.
 `public/data/missing-translations.json`, summarised in the workflow run. Add English to
 `data/raw/translations.json` and rebuild. Currently **0 missing**.
 
+### Upstream v3.3.6 (2026-09-09)
+
+Upstream added recommended **starting items** and **summoner spells** per build, and it had
+quietly added two more things alongside them:
+
+- `startingItems` — items plus a `quantity` (Dagger ×2 and friends). Rendered in the "Opening"
+  block with the normal `ItemChip`, so the tooltip matches every other item.
+- `summonerSpells` — named in Chinese upstream, so `capture.mjs` now also pulls Data Dragon's
+  `summoner.json` into `english.summoners`; we use Riot's English names (Mark, Flash, Ghost,
+  Heal) and self-host the icons under `/img/spell/`.
+- `itemGroups` — the generalised replacement for the fixed `coreItems`/`optionalItems` pair.
+  It usually arrives as a two-entry shim (`legacy-core`, `legacy-optional`), but authors can now
+  add more; Vayne has a third, which the old two-slot shape simply could not hold. The dialog
+  renders from `itemGroups` and falls back to the pair, so an older snapshot still works.
+- `specialMechanisms` — per-champion notes on how one augment behaves on that champion
+  ("after he turns into a zombie it procs twice"). Shown as "Augment Synergies". 19 champions
+  have them; the notes are Chinese prose and translate through `misc.mechanismNotes`.
+
+Only 154 of 220 builds carry starting items and spells so far — upstream says the rest are
+coming — so every one of these blocks is conditional. Do not assume they are present.
+
 ## Gotchas — all of these cost real time, do not rediscover them
 
 - **Never `triggerRef` inside the watcher that owns the ref.** The live overlay mutates

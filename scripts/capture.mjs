@@ -132,11 +132,18 @@ const announcements = await getJson(`${API}/api/public/site-announcements/active
 // 6. Riot Data Dragon — official English champion and item text
 const versions = await getJson(`${DDRAGON}/api/versions.json`)
 const ddVersion = versions[0]
-const [championData, itemData] = await Promise.all([
+const [championData, itemData, summonerData] = await Promise.all([
   getJson(`${DDRAGON}/cdn/${ddVersion}/data/en_US/champion.json`),
   getJson(`${DDRAGON}/cdn/${ddVersion}/data/en_US/item.json`),
+  // Upstream started recommending summoner spells in its v3.3.6 release. It
+  // names them in Chinese, so take Riot's official English names instead of
+  // sending yet another string through the translation pass.
+  getJson(`${DDRAGON}/cdn/${ddVersion}/data/en_US/summoner.json`),
 ])
-console.log(`  data dragon ${ddVersion}: ${Object.keys(championData.data).length} champions`)
+console.log(
+  `  data dragon ${ddVersion}: ${Object.keys(championData.data).length} champions, ` +
+    `${Object.keys(summonerData.data).length} summoner spells`
+)
 
 // 7. CommunityDragon — official English augment names
 const cherryList = await getJson(
@@ -167,6 +174,7 @@ writeFileSync(
       version: ddVersion,
       champions: championData.data,
       items: itemData.data,
+      summoners: summonerData.data,
       arena: { augments: [] },
     },
   })
