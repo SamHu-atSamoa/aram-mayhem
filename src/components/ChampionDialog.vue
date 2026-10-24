@@ -169,6 +169,33 @@ const splash = computed(() => props.champion?.splash ?? '')
                     </div>
                   </div>
 
+                  <!-- Upstream 4.0: which song to take from the Pentakill
+                       augment at level 1 and level 18. Only ~2/3 of builds
+                       say, so the block is conditional like Opening. -->
+                  <div v-if="build.pentakill?.length" class="block">
+                    <h3 class="block__title">Pentakill Picks</h3>
+                    <div class="spell-row">
+                      <span
+                        v-for="p in build.pentakill"
+                        :key="p.level"
+                        class="spell"
+                        :title="`Pentakill augment: at level ${p.level}, pick ${p.name} (empowers ${p.skill})`"
+                      >
+                        <img
+                          class="spell__icon"
+                          :src="p.icon"
+                          :alt="p.name"
+                          width="64"
+                          height="64"
+                          loading="lazy"
+                        />
+                        <span class="muted">Lv {{ p.level }}</span>
+                        {{ p.name }}
+                        <span class="skill-key">{{ p.skill }}</span>
+                      </span>
+                    </div>
+                  </div>
+
                   <div v-for="g in itemGroups" :key="g.id" class="block">
                     <h3 class="block__title">{{ g.title }}</h3>
                     <div class="item-grid">
@@ -435,6 +462,19 @@ const splash = computed(() => props.champion?.splash ?? '')
   border-radius: 7px;
   object-fit: cover;
   background: rgba(0, 0, 0, 0.35);
+}
+
+.skill-key {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border: 0.8px solid var(--border);
+  border-radius: 5px;
+  color: var(--accent-strong);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .mechanism {

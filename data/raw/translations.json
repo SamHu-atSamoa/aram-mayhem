@@ -799,6 +799,134 @@
   "2157": {
    "name": "Upgrade Death's Dance",
    "desc": "Gain bonus stats.\nDamage you take is bled out over time instead of dealt up front.\nAfter a takedown, instantly heal for more Health."
+  },
+  "3055": {
+   "name": "Ultimate Recursion",
+   "desc": "Gain 50 Ultimate Ability Haste."
+  },
+  "3086": {
+   "name": "BEES!!!",
+   "desc": "Periodically, your next ability that hits an enemy champion launches an exploding beehive, dealing magic damage and slowing over a short time. Bees apply on-hit effects."
+  },
+  "3075": {
+   "name": "Recoil",
+   "desc": "Your chosen ability deals bonus damage, and the recoil knocks you backwards."
+  },
+  "3150": {
+   "name": "Upgrade Stormsurge",
+   "desc": "Stormsurge - Squall now always detonates in an area, dealing magic damage based on max Health. Enemy champions hit by the initial detonation are marked by Squall.\nGain 500 gold."
+  },
+  "3088": {
+   "name": "CRIMSON COBALT",
+   "desc": "Enemy champions damaged by your chosen ability are marked. Attacking a marked enemy deals bonus magic damage and reduces your chosen ability's cooldown."
+  },
+  "1310": {
+   "name": "Clown College",
+   "desc": "Gain the summoner spell Deceive.\nGain Backstab as a passive.\nWhen you die, spawn an exploding Jack in the Box that deals heavy true damage to nearby enemies and fears them."
+  },
+  "3052": {
+   "name": "Hands off the Talent",
+   "desc": "Attacks made from near your maximum attack range deal bonus physical on-hit damage."
+  },
+  "3116": {
+   "name": "Take'em Down Down Down",
+   "desc": "Attacks and abilities deal bonus magic damage on hit and apply stacks to enemy champions. At max stacks, consume them all to deal magic damage based on missing Health and heal based on the damage dealt."
+  },
+  "3081": {
+   "name": "Weapon of Destiny",
+   "desc": "Your first Legendary item becomes a Weapon of Destiny, gaining stats based on your champion takedowns."
+  },
+  "3131": {
+   "name": "Still Here",
+   "desc": "Gain Attack Speed and Life Steal based on your missing Health."
+  },
+  "3132": {
+   "name": "Heavy Is The Crown",
+   "desc": "Gain Attack Damage, Ability Power and Attack Speed, but lose Move Speed. Each takedown grants a stack of Burden that increases the effect. Lose half your stacks on death."
+  },
+  "3078": {
+   "name": "The Boom and the Bass",
+   "desc": "After casting an ability, your next attack is faster, deals bonus magic damage and grants decaying Move Speed."
+  },
+  "3016": {
+   "name": "Third Times the Harm",
+   "desc": "Every third consecutive attack on an enemy champion deals true damage and permanently increases the damage dealt by this effect."
+  },
+  "3079": {
+   "name": "Totentanz",
+   "desc": "Replace one summoner spell with Dance with Death.\nDance with Death: blink forward and become unkillable. Take part in a champion takedown within 5 seconds, or you die outright."
+  },
+  "3018": {
+   "name": "Big Shot",
+   "desc": "Gain 35% Critical Strike Damage and 25% bonus Attack Damage. 75% of your Attack Speed is converted into Critical Strike Damage."
+  },
+  "3094": {
+   "name": "Lich Brain",
+   "desc": "Gain Ability Power; the bonus includes a flat amount and scales with bonus Health."
+  },
+  "3051": {
+   "name": "Blue Barrier",
+   "desc": "Gain a shield for 1.5 seconds equal to 200–450% of the Mana you spend."
+  },
+  "3121": {
+   "name": "Fruitify",
+   "desc": "Takedowns cause a fruit explosion. The fruit restores Health and Mana."
+  },
+  "3049": {
+   "name": "Armored Impact",
+   "desc": "After casting an ability, your next attack deals bonus physical damage to nearby enemies, scaling with Armor."
+  },
+  "3129": {
+   "name": "Sap Magic",
+   "desc": "Every 20 seconds, your next attack deals bonus physical on-hit damage and heals you. Casting abilities reduces this cooldown."
+  },
+  "3004": {
+   "name": "Get Jinxed",
+   "desc": "Replace one summoner spell with Get Jinxed!\nGet Jinxed!: ride a rocket that explodes when it hits an enemy champion, structure or wall, dealing physical damage to enemies in the blast radius."
+  },
+  "3085": {
+   "name": "Flow of Spirit",
+   "desc": "Casting your chosen ability grants Attack Speed for a duration."
+  },
+  "3053": {
+   "name": "Mosh Monster",
+   "desc": "Casting your chosen ability grants 300–750 bonus Health and slows nearby enemies for the ability's duration. Each takedown permanently increases the effect."
+  },
+  "3123": {
+   "name": "Jeweled Bracelet",
+   "desc": "Your chosen ability can critically strike. Gain 25% Critical Strike Chance."
+  },
+  "3134": {
+   "name": "Lonely Warrior",
+   "desc": "Gain Attack Speed, Armor and Magic Resist for each nearby enemy champion."
+  },
+  "3163": {
+   "name": "Enchanting Butterflies",
+   "desc": "Healing or shielding allied champions gathers butterflies. Once you have 7, damaging an enemy champion launches them to deal magic damage."
+  },
+  "3071": {
+   "name": "Brass Blast",
+   "desc": "Replace one summoner spell with Brass Blast.\nBrass Blast: charge up and blow a giant horn, knocking back enemies and dealing magic damage."
+  },
+  "3149": {
+   "name": "Group Hug",
+   "desc": "When your chosen ability heals or shields an allied champion, it is cast again on 2 other nearby allied champions."
+  },
+  "3036": {
+   "name": "Double Time",
+   "desc": "Damaging an enemy champion with 2 different abilities in a short time deals magic damage and grants max Mana."
+  },
+  "1386": {
+   "name": "Spin Me Right Round",
+   "desc": "Replace one summoner spell with Spin Me Right Round.\nFire a grappling hook that latches onto terrain; recast to swing around it. While swinging, you automatically attack the nearest enemy. The swing ends when you collide with an enemy champion or recast."
+  },
+  "1238": {
+   "name": "Transmute: Prismatic",
+   "desc": "Gain 1 random Prismatic augment."
+  },
+  "3025": {
+   "name": "Sound Barrier",
+   "desc": "Shielding an ally grants them decaying Move Speed and Ghosting for 1.5 seconds."
   }
  },
  "guides": [
@@ -1009,6 +1137,30 @@
    "gameplay": "## Core Mechanics\n\nAP Zeri's burst does not come from Q. It comes from:\n\n- **the fully charged right-click**\n- **the area damage the moment R is cast**\n\nZeri's charged right-click has a very high Ability Power ratio and adds magic damage based on the target's maximum Health; the instant R activates carries a very high Ability Power ratio too.\n\nSo the basic burst is:\n\n> have the charged right-click ready\n> → enter on Mark\n> → R to blow up multiple targets\n> → charged right-click on their carry\n> → Zhonya's to survive, or E to get out\n\nUnlike AD Zeri:\n\n> AD Zeri wants sustained Q damage after R\n> AP Zeri wants the single instant of R plus the charged right-click\n\n## Core Augments\n\n### ![augment:Echo Cast](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2062.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nIf it empowers R, it is an absurdly strong roll for this build.\n\nAfter you cast R, a copy casts R again, so you get:\n\n> your own R\n> ＋ the copy's R\n> → two rounds of area magic burst\n\nWatch your cursor direction when you use it, so the copy covers the enemy group too.\n\n### ![augment:Jeweled Gauntlet](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1048.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nLets ability damage crit, which suits AP Zeri perfectly.\n\nZeri's right-click counts as ability damage, so it simultaneously boosts:\n\n- R\n- the charged right-click\n- W\n- E-related damage\n\nThis is not about turning Zeri into a traditional crit ADC — it raises the ceiling on her AP burst.\n\n### ![augment:Ultimate Revolution](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1088.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nGives you another R right after casting one.\n\nThe simplest burst:\n\n> enter on Mark\n> → R\n> → second R\n> → charged right-click\n> → Zhonya's\n\nThe tighter the enemy grouping, the better it pays.\n\n### ![augment:Purist - Caster](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2018.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nMainly raises how often you can cast.\n\nIt converts Attack Speed into Ability Haste, so the Attack Speed Zeri gains after R also turns into cooldown value.\n\nIt leans toward:\n\n> casting R more often\n\nrather than making a single burst bigger.\n\nIf you have already solved your ultimate cooldown with Ultimate Revolution, Eureka or similar, there is no need to sacrifice much Ability Power for Caster.\n\n## Alternative Augments\n\n### ![augment:It's Killing Time](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1211.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nA great fit for the dive-bomb style.\n\nIt marks enemies after you cast R, records the damage you deal afterwards, and detonates again at the end.\n\nZeri can do exactly that:\n\n> R\n> → charged right-click\n> → item damage\n> → It's Killing Time detonates again\n\nEffectively a second burst phase.\n\n### ![augment:Eureka](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1030.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nThe more Ability Power you have, the more Ability Haste you get.\n\nAP Zeri already stacks Rabadon's, Shadowflame and other high-AP items, so you get both:\n\n> Ability Power for the burst\n> ＋ Ability Power converted into Ability Haste\n> → R comes back faster\n\n### ![augment:Ult Bot](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2118.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nFor taking the playstyle to its extreme.\n\nIt sacrifices your basic ability cooldowns to heavily boost ultimate haste.\n\nIf the plan for the game is:\n\n> stay alive purely to Mark in and cast R\n\nthen it pays off handsomely.\n\n### ![augment:Giant Slayer](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/1195.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nGood when the enemy has plenty of tanks, bruisers and high-Health champions.\n\nThe charged right-click already deals maximum-Health damage, so Giant Slayer pushes your frontline damage further.\n\n### ![augment:Tooth Fairy](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2083.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1)\n\nTooth Fairy's flat magic penetration suits AP Zeri very well.\n\nZeri's:\n\n- R\n- charged right-click\n- W\n\nare mostly magic damage, so once the stacks build the burst improves noticeably.\n\n## Recommended Build\n\nCore items: ![item:Malignance](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223118.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Shadowflame](https://cdn.cchappy.top/hks/assets/hextech-aram/items/224645.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Rabadon's Deathcap](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223089.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Void Staff](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223135.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Zhonya's Hourglass](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223157.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Lich Bane](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223100.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\n## A Note on Experimental Hexplate\n\nIf you have Purist - Caster, this item creates a nice extra interaction.\n\nThe Attack Speed you gain after R converts into Ability Haste through Caster:\n\n> Attack Speed after R\n> → Caster converts it to Ability Haste\n> → your next round of abilities comes back faster\n\nSo with Caster it is worth considering as a utility item.\n\nWithout Caster, its Attack Damage stats do little for pure AP Zeri, so it is low priority.\n\n## Good Matchups\n\nWorks well when:\n\n- The enemy has plenty of squishies\n- The enemy likes to group up\n- Your team already has a reliable AD carry\n- Someone else on your team handles wave clear\n- You have frontline or crowd control to create Mark opportunities\n- You get Jeweled Gauntlet, Ultimate Revolution or Echo Cast early\n\nThe ideal case is enemy marksmen and mages standing close together, so one Mark-and-R hits several of them at once.\n\n## Bad Matchups\n\nDo not force it when:\n\n- The enemy has many tanks and bruisers\n- Your team is already full AP\n- Your team lacks wave clear\n- Your team lacks sustained damage\n- The enemy has very strong crowd control and counter-engage\n- You have no Ability Power, damage amp or R-related augments at all\n\nAP Zeri's biggest weakness:\n\n> **Her burst is enormous, but her sustained damage and wave clear are clearly worse than AD Zeri's.**\n\nSo treat it as a specialised playstyle for the right augments and the right comp, rather than converting to AP every game.\n\n## Summary\n\nAP dive-bomb Zeri is about compressing all of your damage into the few seconds after you enter:\n\n> charge the right-click before the fight\n> → Mark into the enemy group\n> → R for a wide magic burst\n> → charged right-click to finish their carry\n> → Ultimate Revolution / Echo Cast for extra R casts\n> → Zhonya's to stall, then E out\n\nThe core idea:\n\n> **R blows up the team, the charged right-click deletes the carry.**\n",
    "authorName": "Player from Jinhua",
    "authorLocation": "Jinhua"
+  },
+  {
+   "id": "guide-03945eb7",
+   "title": "Infinite E Spin-to-Win Tryndamere",
+   "summary": "Core: Archmage + 200 Ability Haste gives you infinite E.",
+   "gameplay": "Note: Q's cooldown doesn't improve with rank, so max Q and put only one point in E.\n\nIf you get ![augment:Purist - Caster](https://cdn.cchappy.top/hks/assets/hextech-aram/augments/latest/2018.png?imageView2/1/w/96/h/96/format/webp/q/75/ignore-error/1), you can swap ![item:Cosmic Drive](https://cdn.cchappy.top/hks/assets/hextech-aram/items/224629.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) and ![item:Black Cleaver](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223071.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) for ![item:Lich Bane](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223100.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) ![item:Lord Dominik's Regards](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223036.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\nFor augments, mostly take cooldown ones.",
+   "authorName": "",
+   "authorLocation": ""
+  },
+  {
+   "id": "guide-3afc1ca4",
+   "title": "Master of Duality Renata",
+   "summary": "Stack up Master of Duality and deal damage with passive-empowered autos. W gives more Move Speed the more AP you have, which makes stacking easier.",
+   "gameplay": "Don't let your teammates clear the wave. You can take W cooldown augments.",
+   "authorName": "Snail Clan Warrior",
+   "authorLocation": "Weifang"
+  },
+  {
+   "id": "guide-28f4ffed",
+   "title": "Bruiser Sylas",
+   "summary": "Fighting.",
+   "gameplay": "No core augment — pick it when the game suits it. Start with Guardian's Blade + Long Sword. The first three items never change: Essence Reaver + Rite of Ruin + Death's Dance, then fill in the rest based on the game. If you have cooldown augments you can skip Navori Flickerblades.",
+   "authorName": "Player from Nanyang",
+   "authorLocation": "Nanyang"
   }
  ],
  "tips": {
@@ -1298,7 +1450,56 @@
   "必拿，很强": "Must-pick, very strong.",
   "种子只触发一次": "Seeds only proc it once.",
   "第二段会把人弹开 摸不到人": "The second cast knocks them away, so you can't reach them.",
-  "邪修玩法出肉": "Off-meta build — go tanky."
+  "邪修玩法出肉": "Off-meta build — go tanky.",
+  "丢子多可换C44": "Against lots of squishies, swap to Hexoptics C44.",
+  "炼狱扳机基本触发不了，w叠不起来": "Triggered Inferno barely ever procs, and W won't stack.",
+  "没伤害的": "Does no damage.",
+  "分身的Q可无冷却触发卢登效果": "The clone's Q procs the Luden's effect with no cooldown.",
+  "q只有第一下触发": "Only the first Q hit triggers it.",
+  "触发板机放不了技能": "Once Triggered Inferno procs you can't cast abilities.",
+  "拿到之后巨费蓝，出两个水滴都不够用。": "Burns through mana — even two mana items aren't enough.",
+  "E技能无法触发额外伤害": "E doesn't trigger the bonus damage.",
+  "一个e每个敌人只能触发一次，十分难叠": "Each E only procs once per enemy, so it's very hard to stack.",
+  "放R后假身变大": "After R, the decoy gets bigger.",
+  "陷阱符文，只能第一个拿建立优势，后续第二第三个拿会影响手感，那点伤害都不够QWQ一直刮的伤害，而且不能用Q很麻烦，限制了人马主要输出技能": "Trap augment. Only worth it as your first pick for an early lead; taking it second or third feels awful — the damage doesn't match what you'd get just spinning Q, and being locked out of Q is a real pain since it's Hecarim's main damage ability.",
+  "W不会触发": "W doesn't trigger it.",
+  "熊无法触发回血效果": "The heal doesn't trigger.",
+  "触发之后不能Q": "Can't Q after it procs.",
+  "无法跟R匹配": "Doesn't work with R.",
+  "qr自带暴击无法叠加珠光护手，只能ew触发，一把下来一千伤害": "Q and R already crit, so they don't stack with Jeweled Gauntlet — only E and W trigger it. About 1,000 damage over a whole game.",
+  "不能加雪": "Doesn't heal.",
+  "w释放动作变慢": "W's cast animation gets slower.",
+  "炸桶不给牙": "Barrels don't drop teeth.",
+  "不能用啊": "Doesn't work at all.",
+  "跟老练狙神一起，老练狙神不生效": "With Skilled Sniper, Skilled Sniper stops working.",
+  "出了灰烬也不生效": "Still doesn't work even with burn items.",
+  "隐身大": "Invisible ult.",
+  "不会触发被动": "Doesn't trigger the passive.",
+  "按下大招开始算时间，到人脸上时buff都快没了": "The timer starts when you press R, so the buff has nearly run out by the time you reach them.",
+  "只复制加速没伤害": "Only copies the speed boost, not the damage.",
+  "不算层数": "Doesn't count toward stacks.",
+  "移出老鼠的海克斯池子了": "Removed from Twitch's augment pool.",
+  "非常好叠": "Stacks very easily.",
+  "必拿，强度很高": "Must-pick — very strong.",
+  "除了加暴击几率以外没任何作用": "Does nothing except add Crit Chance.",
+  "攻速太慢了": "Attack speed is too slow.",
+  "开大自动攻击，很猛，可以考虑出法穿": "Ult auto-attacks for you — very strong. Consider magic penetration.",
+  "不触发灵魂": "Doesn't trigger the essence.",
+  "大招持续时间结束后才触发": "Only triggers after the ult ends.",
+  "不叠被动": "Doesn't stack the passive.",
+  "二段Q无法暴击": "Second Q can't crit.",
+  "Q二段不算，一点用没有。": "The second part of Q doesn't count — completely useless.",
+  "可考虑第一件出": "Consider it as your first item.",
+  "不能和大法师一起，会断刷新": "Doesn't work with Archmage — it breaks the cooldown resets.",
+  "R中人不能处决": "Hitting R doesn't let you execute.",
+  "刷新E技能完全没用，E不出手不刷新": "Refreshing E is useless — E doesn't refresh until it's thrown.",
+  "别拿很鸡肋。": "Don't take it — barely useful.",
+  "不能触发": "Doesn't trigger.",
+  "哪里是人能触发的东西啊": "Practically impossible to trigger.",
+  "复活后W不能在用了。": "W can't be used again after reviving.",
+  "焰浪也能叠": "Fire waves stack it too.",
+  "没用啊 触发不了": "Useless — never triggers.",
+  "不减大招CD": "Doesn't reduce ult cooldown."
  },
  "misc": {
   "buildNames": {
@@ -1337,7 +1538,16 @@
    "AP恶心流": "AP Cheese Build",
    "肉小鱼": "Tank Fizz",
    "暴击": "Crit",
-   "无限Q": "Infinite Q"
+   "无限Q": "Infinite Q",
+   "秒人流": "Burst Build",
+   "蓝凯3级Q后主W": "Shadow Assassin: Q at 3, then max W",
+   "AP射手流": "AP Marksman Build",
+   "无限q": "Infinite Q",
+   "秒杀流": "One-Shot Build",
+   "ap流": "AP Build",
+   "穿甲抗伤流": "Armor Pen Bruiser Build",
+   "一刀流剑魔": "One-Hit Aatrox",
+   "叮流": "Ding Build"
   },
   "groupNames": {
    "AD出装": "AD Build",
@@ -1397,7 +1607,10 @@
    "邦！出装": "BONK! Build",
    "双烧出装": "Double Burn Build",
    "卢登出装": "Luden's Build",
-   "暴击装": "Crit Items"
+   "暴击装": "Crit Items",
+   "术士备选装": "Mage Alternatives",
+   "钢出装": "Tank Items",
+   "备选": "Alternatives"
   },
   "notes": [
    {
@@ -1619,6 +1832,46 @@
     "hero": "Belveth",
     "build": "build-1779946049224-0",
     "en": "Bel’Veth is very strong late now that she has been reworked. If you pick up Typhoon or Double Tap you can go for the crit items below."
+   },
+   {
+    "hero": "Sion",
+    "build": "player-e6680169",
+    "en": "After Sion dies, every auto from his passive deals 10% max Health damage, Lord Dominik's adds 15% damage and Blade of the Ruined King adds 9% current Health. With Fan the Hammer, one hit from the corpse takes 80% of their Health — if they don't die, swing again from another angle."
+   },
+   {
+    "hero": "Viktor",
+    "build": "build-1",
+    "en": "Prioritise Move Speed augments."
+   },
+   {
+    "hero": "Kayn",
+    "build": "player-6d2dbee0",
+    "en": "Only go Shadow Assassin when the enemy has 3 or more squishies. He needs mobility above all, so Move Speed and engage augments are core. He's an assassin whose job is to cut down the enemy carry, so Death's Dance isn't much use — it's all about the fast kill.\nShadow Assassin has plenty of damage: any squishy without defensive items dies to W-Q-auto, and even with defensive items an R followed by auto-Q finishes them.\nIf you get Jeweled Gauntlet, fill out crit with Lord Dominik's, Infinity Edge and Atma's Reckoning — high damage with room for mistakes.\nOnly consider Upgrade Infinity Edge and Upgrade Collector if Jeweled Gauntlet was your first augment."
+   },
+   {
+    "hero": "Hecarim",
+    "build": "player-d7d76701",
+    "en": "Hubris raises the late-game ceiling."
+   },
+   {
+    "hero": "Gangplank",
+    "build": "build-1779690846834-0",
+    "en": "Q at level 3, then max E."
+   },
+   {
+    "hero": "Fizz",
+    "build": "player-ba0a1a4f",
+    "en": "Worth considering if Mystic Punch shows up early; if your second augment is Ultimate Awakening, go all in."
+   },
+   {
+    "hero": "Aatrox",
+    "build": "player-300c201a",
+    "en": "Mix and match the items freely, but make your first one a tank item — without one Aatrox is fragile and easy to kite. If anyone has a burst build, please submit it; this one still feels a bit low on damage."
+   },
+   {
+    "hero": "Leblanc",
+    "build": "player-1af9f859",
+    "en": "W in, ding. R in, ding."
    }
   ],
   "mechanismNotes": {
@@ -1640,7 +1893,35 @@
    "铁男被动打出来可以秒s": "Land Mordekaiser's passive and you hit an S instantly.",
    "可用Q+三环触发最大伤害": "Use Q plus the third ring to hit max damage.",
    "复制体W是满层豪意值": "The clone's W comes out at full Grit.",
-   "阵亡后可以立即刷新R的冷却": "Dying immediately refreshes your R cooldown."
+   "阵亡后可以立即刷新R的冷却": "Dying immediately refreshes your R cooldown.",
+   "大招面板伤害加很多": "Adds a lot to her ult's base damage.",
+   "每次射击能除非狗熊被动，加上电刀，对面人越多伤害越高": "Every shot triggers Volibear's passive; with Statikk Shiv, the more enemies there are, the more damage you do.",
+   "卡好距离可无限E": "Hold the right distance and you can cast E endlessly.",
+   "比空头熊的优先级高": "Higher priority than DropBear.",
+   "W牌出手后立刻后撤，可触发老练狙神返还W冷却。": "Back off as soon as you throw the W card to trigger Skilled Sniper and refund W's cooldown.",
+   "e弹英雄减少cd": "E bouncing to champions reduces cooldowns.",
+   "虽然q触发不了很多符文，但能触发老练狙神": "Q can't trigger many augments, but it does trigger Skilled Sniper.",
+   "大招触发四次易损": "His ult applies Brittle four times.",
+   "雪球弹球配合巨魔柱子无敌": "Snowball pinball plus the pillar is unbeatable.",
+   "三重射击+Q:额外能打到超出自身Q施法距离的敌人，最大2倍距爽": "Tripleshot + Q: also hits enemies beyond Q's cast range — up to double range. Great fun.",
+   "回归基本功＋被动:除QWER，也能是高坦的普攻伤害。": "Back to Basics + passive: besides his abilities, his autos get the big damage boost too.",
+   "兵线来之前多打架一波30*5=150": "Pick an extra fight before the minion wave arrives: 30 × 5 = 150.",
+   "平A可被回归基本功增幅": "Auto attacks are amplified by Back to Basics.",
+   "沙兵的戳人不受影响，强度很高": "Sand Soldier pokes are unaffected — very strong.",
+   "按r的时候按小丑学院，亚索肉身不会飞过去": "Use Clown College as you press R and Yasuo's body won't fly in.",
+   "W触发超多次虚幻武器，搭配火上浇油  秘术冲拳 等非常好用": "W procs Ethereal Weapon many times over — great with Firebrand, Mystic Punch and the like.",
+   "两次Q直接满层且复活期间也能用Q": "Two Qs fully stack it, and you can still Q while reviving.",
+   "放利刃的时候也能放Q技能": "You can cast Q while Blade Waltz is active.",
+   "开启大招后，平A也能变动物": "After activating his ult, autos can polymorph too.",
+   "好用 无CD": "Great — no cooldown.",
+   "现在的w伤害非常爆炸 有就拿": "W damage is huge right now — take it whenever it's offered.",
+   "出破败黄昏打肉像脆皮": "Build Blade of the Ruined King and Dusk and Dawn and tanks die like squishies.",
+   "可以直接打出被动": "Triggers his passive directly.",
+   "一个雪球满怒气": "One snowball fills her Fury.",
+   "契合高频攻击": "Fits his rapid-fire attacks.",
+   "大风车蛮子": "Spin-to-win Tryndamere.",
+   "三重射击 炒饭邪恶有联动 来个缩小无敌": "Tripleshot combos with Phenomenal Evil — add Shrink Engine and you're unstoppable.",
+   "E技能刮到人也可以触发": "Also triggers when E grazes an enemy."
   }
  },
  "messages": [

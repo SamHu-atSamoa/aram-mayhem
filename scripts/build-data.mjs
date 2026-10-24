@@ -214,7 +214,29 @@ function mapAugment(a) {
     rank: a.recommendationRank ?? null,
     score: a.recommendationScore ?? null,
     tip: tip(a.tip),
+    /* Upstream 4.0: the item an augment wants you to build with it — which
+     * legendary to turn into the Weapon of Destiny, what to pair with
+     * Pearlescent Gauntlet, and so on. Most augments have none. */
+    items: (a.exclusiveItems || []).filter((it) => !it.removed).map(mapItem),
   }
+}
+
+/* Upstream 4.0 added a Pentakill augment that asks you to pick one band
+ * member's song at level 1 and again at level 18; each song buffs one ability.
+ * Builds now say which ability to pick. CommunityDragon has one augment per
+ * ability, so the official English name (HEAVY, POWER...) comes from there. */
+const PENTAKILL_AUGMENT = { Q: 3170, W: 3171, E: 3172, R: 3173 }
+
+function mapPentakill(b) {
+  return [
+    [1, b.pentakillFirstSkill],
+    [18, b.pentakillSecondSkill],
+  ]
+    .filter(([, skill]) => PENTAKILL_AUGMENT[skill])
+    .map(([level, skill]) => {
+      const id = PENTAKILL_AUGMENT[skill]
+      return { level, skill, id, name: cherry[id]?.nameTRA?.trim() || skill, icon: augmentIcon(id) }
+    })
 }
 
 /* Upstream v3.3.6 added opening builds and summoner spell picks. The item
@@ -294,6 +316,7 @@ for (const [id, h] of Object.entries(snapshot.heroes)) {
       name: translatedName(trBuildNames, 'buildNames', b.name),
       primarySkill: b.primarySkill,
       secondarySkill: b.secondarySkill,
+      pentakill: mapPentakill(b),
       coreGroupName: translatedName(trGroupNames, 'groupNames', b.coreItemGroupName),
       optionalGroupName: translatedName(trGroupNames, 'groupNames', b.optionalItemGroupName),
       coreItems: b.coreItems.map(mapItem),

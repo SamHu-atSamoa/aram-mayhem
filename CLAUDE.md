@@ -89,6 +89,20 @@ quietly added two more things alongside them:
 Only 154 of 220 builds carry starting items and spells so far — upstream says the rest are
 coming — so every one of these blocks is conditional. Do not assume they are present.
 
+### Upstream 4.0 (2026-10-22, announced as "being organised")
+
+- `pentakillFirstSkill` / `pentakillSecondSkill` — upstream's editor labels these
+  "五杀摇滚 · 1级 / 18级": which ability to pick from the Pentakill augment at level 1 and 18.
+  CommunityDragon has one augment per ability (3170 HEAVY=Q, 3171 POWER=W, 3172 THRASH=E,
+  3173 DOOM=R); `build-data` maps them and the dialog shows "Pentakill Picks". ~2/3 of builds
+  set them; empty strings otherwise.
+- `exclusiveItems` on each augment — item(s) to build with it (Weapon of Destiny's target,
+  Jeweled Gauntlet's crit items). Emitted as `augment.items`, shown as icons on the card.
+- A new augment set (ids 3xxx, CommunityDragon "Kiwi") arrived with Chinese descriptions;
+  translated into `translations.json` alongside the backlog. Back to **0 missing**.
+- When merging into `translations.json` from a script, note JS reorders integer-like keys —
+  the `augments` map is not in numeric order, so a naive parse/stringify rewrites the file.
+
 ## Gotchas — all of these cost real time, do not rediscover them
 
 - **Never `triggerRef` inside the watcher that owns the ref.** The live overlay mutates

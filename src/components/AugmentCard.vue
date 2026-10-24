@@ -31,11 +31,30 @@ const open = ref(false)
       <span v-if="augment.tip" class="augment__tip">{{ augment.tip }}</span>
     </div>
 
+    <!-- Upstream 4.0: the item(s) to build with this augment. Icons only here
+         to keep the card one line; names are in the tooltip. -->
+    <span v-if="augment.items?.length" class="augment__items">
+      <img
+        v-for="it in augment.items"
+        :key="it.id"
+        :src="it.icon"
+        :alt="it.name"
+        width="64"
+        height="64"
+        loading="lazy"
+      />
+    </span>
+
     <span v-if="showRank && augment.rank" class="augment__rank">#{{ augment.rank }}</span>
 
-    <div v-if="open && augment.desc" class="augment__tooltip">
+    <div v-if="open && (augment.desc || augment.items?.length)" class="augment__tooltip">
       <strong>{{ augment.name }}</strong>
-      <p v-for="(line, i) in augment.desc.split('\n')" :key="i">{{ line }}</p>
+      <p v-for="(line, i) in (augment.desc || '').split('\n')" :key="i">{{ line }}</p>
+      <p v-if="augment.items?.length" class="augment__pair">
+        <!-- Not "or": for Weapon of Destiny the items are alternatives, but
+             for Jeweled Gauntlet they are meant to be built together. -->
+        Build with: {{ augment.items.map((it) => it.name).join(', ') }}
+      </p>
     </div>
   </div>
 </template>
@@ -104,6 +123,24 @@ const open = ref(false)
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.augment__items {
+  flex: none;
+  display: flex;
+  gap: 3px;
+}
+
+.augment__items img {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.augment__pair {
+  color: var(--gold);
 }
 
 .augment__rank {
