@@ -103,6 +103,21 @@ coming — so every one of these blocks is conditional. Do not assume they are p
 - When merging into `translations.json` from a script, note JS reorders integer-like keys —
   the `augments` map is not in numeric order, so a naive parse/stringify rewrites the file.
 
+### Upstream 4.0.1 (2026-10-25)
+
+- New endpoint `heroes/{id}/augment-stats`: every augment's win rate, pick rate and games on
+  that champion (~125 per champion), grouped by rarity. Found via upstream's
+  `website-releases/tools` changelog and its JS bundle — the release added no fields to the
+  data we already captured, so a schema diff alone would have missed it.
+- `capture.mjs` pulls it per champion (now ~360 requests a run) into
+  `data/raw/augment-stats.json` as `[id, winRate, pickRate, games]` tuples. A champion that
+  fails is skipped, not fatal. `winRate` is `null` when the sample is too small.
+- `build-data` adds every ranked augment to `augments.json` (names/icons from CommunityDragon,
+  text from `translations.json`) and writes `augment-stats/{id}.json` with ids only. The
+  dialog's `AugmentRankings.vue` loads both lazily: win-rate sort by default, rarity filter,
+  top 15 with "Show all".
+- `website-releases/tools` is the place to check when upstream announces an update.
+
 ## Gotchas — all of these cost real time, do not rediscover them
 
 - **Never `triggerRef` inside the watcher that owns the ref.** The live overlay mutates

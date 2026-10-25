@@ -3,6 +3,7 @@ import { ref, computed, watch, onBeforeUnmount } from 'vue'
 import { loadJson } from '../composables/useData'
 import ItemChip from './ItemChip.vue'
 import AugmentCard from './AugmentCard.vue'
+import AugmentRankings from './AugmentRankings.vue'
 
 const props = defineProps({
   champion: { type: Object, default: null },
@@ -256,6 +257,9 @@ const splash = computed(() => props.champion?.splash ?? '')
                   </div>
                 </section>
               </div>
+
+              <!-- Champion-wide, so it sits outside the per-build columns. -->
+              <AugmentRankings v-if="detail.hasAugmentStats" :champion-id="detail.id" />
 
               <footer class="dialog__foot muted">
                 Build updated {{ build.updatedAt || detail.updateTime }} · stats

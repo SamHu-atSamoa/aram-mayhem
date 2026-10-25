@@ -1,5 +1,37 @@
 {
  "augments": {
+  "1237": {
+   "name": "Transmute: Gold",
+   "desc": "Gain 1 random Gold augment."
+  },
+  "1243": {
+   "name": "Transmute: Chaos",
+   "desc": "Gain 2 random augments."
+  },
+  "1402": {
+   "name": "Stats on Stats on Stats!",
+   "desc": "Gain 4 Stat Anvils, with a higher chance of Gold and Prismatic anvils!\nGain an extra reroll for each slot on your next augment selection."
+  },
+  "1403": {
+   "name": "Stats on Stats!",
+   "desc": "Gain 3 Stat Anvils, with a higher chance of Gold and Prismatic anvils!"
+  },
+  "1404": {
+   "name": "Stats!",
+   "desc": "Gain 2 Stat Anvils!"
+  },
+  "3063": {
+   "name": "Gift of the Drowned",
+   "desc": "Convert bonus health into Lethality. Gain 10–25 Lethality."
+  },
+  "3118": {
+   "name": "Arcane Axiom",
+   "desc": "After you damage an enemy champion, if they die within 3 seconds, refund part of your ultimate's total cooldown."
+  },
+  "12317": {
+   "name": "Pandora's Box",
+   "desc": "Transform all of your augments into random Prismatic augments."
+  },
   "1318": {
    "name": "Upgrade Zhonya's",
    "desc": "Zhonya's Hourglass cooldown is reduced to 45 seconds. You can now move and gain Move Speed during Zhonya's Hourglass, Seeker's Armguard, or Wooglet's Witchcap Stasis.\nGain 250 gold."
@@ -931,6 +963,14 @@
  },
  "guides": [
   {
+   "id": "guide-00029076",
+   "title": "Armored Impact Build Guide",
+   "summary": "For when you get Armored Impact at level 1 or 7 — it decides your build for the whole game.",
+   "gameplay": "Open with ![item:Chain Vest](https://cdn.cchappy.top/hks/assets/hextech-aram/items/221031.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1) x6 and don't complete any legendary until your slots are full. After that, build ![item:Iceborn Gauntlet](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226662.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)  ![item:Thornmail](https://cdn.cchappy.top/hks/assets/hextech-aram/items/223075.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)  ![item:Jak'Sho, The Protean](https://cdn.cchappy.top/hks/assets/hextech-aram/items/226665.png?imageView2/1/w/64/h/64/format/webp/q/75/ignore-error/1)\n\n\nThis build works on every tank and fighter — swap items as needed.",
+   "authorName": "",
+   "authorLocation": ""
+  },
+  {
    "id": "guide-1432b98f",
    "title": "Meteor Shower Maokai: Infinite E From Downtown",
    "summary": "Use “Purist - Caster” to stack absurd Ability Haste so Maokai can endlessly toss E saplings into bushes, then pair it with “From Downtown” so saplings and your ult call down meteors every time they hit an enemy from over 700 units away, creating a long-range torture build that fills the screen with falling stars.",
@@ -1164,6 +1204,8 @@
   }
  ],
  "tips": {
+  "加强后很厉害": "Very strong since its buff.",
+  "出AP": "Build AP.",
   "0作用打不出牙": "Useless, you can't get any teeth to drop.",
   "180cd无限EW": "180 haste = infinite E-W.",
   "AP选": "Take it on AP.",
@@ -1614,6 +1656,11 @@
   },
   "notes": [
    {
+    "hero": "Hecarim",
+    "build": "build-1779623515720-0",
+    "en": "Hecarim has so many augments that work — just take whatever shows up~"
+   },
+   {
     "hero": "Pantheon",
     "build": "player-959ce889",
     "en": "Good for slugfests, or when the enemy team is all tanks. Once it's online in the late game, a single W is a guaranteed execute."
@@ -1875,6 +1922,7 @@
    }
   ],
   "mechanismNotes": {
+   "开大后用这个，带着大招转": "Cast your ult first, then use this — Crowstorm comes with you as you dash around.",
    "变僵尸后，可以一次触发两次": "Once he turns into a zombie it procs twice in one go.",
    "开大途中死亡，大招不会消失": "If you die mid-ult, the ult still goes off.",
    "使用大招蓄力不释放，可以白嫖符文效果，且技能CD也能返还": "Charge the ult without releasing it and you get the augment effect for free, plus the cooldown back.",

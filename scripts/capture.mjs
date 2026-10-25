@@ -8,7 +8,7 @@
  *   node scripts/capture.mjs
  *
  * Deliberately gentle on the upstream API: small concurrency, a pause between
- * requests, retries with backoff. One run makes ~180 requests, which is why the
+ * requests, retries with backoff. One run makes ~360 requests (two per champion), which is why the
  * refresh is scheduled daily rather than performed per visitor.
  */
 import { writeFileSync, mkdirSync } from 'node:fs'
@@ -105,6 +105,53 @@ if (failed.length) {
 }
 console.log(`  builds: ${Object.keys(heroes).length}`)
 
+// 2b. per-champion augment leaderboard (upstream 4.0.1)
+/* Every augment's win rate, pick rate and game count on this champion, grouped
+ * by rarity. Upstream syncs it about once a day from a third-party stats source,
+ * so a daily capture loses nothing. It is a nice-to-have next to the builds:
+ * a champion that fails twice is left out (the dialog hides the table) rather
+ * than failing the whole refresh.
+ *
+ * Stored as [augmentId, winRate, pickRate, games] tuples — upstream also sends a
+ * Chinese name and a third-party icon URL per row, but we take both from
+ * CommunityDragon, and dropping them keeps the daily commit small. */
+const augmentStats = {}
+const statsFailed = []
+const slimStats = (d) => ({
+  syncedAt: d.syncedAt,
+  dataVersion: d.dataVersion,
+  usingFallback: !!d.usingFallback,
+  groups: Object.fromEntries(
+    Object.entries(d.groups || {}).map(([rarity, rows]) => [
+      rarity,
+      rows.map((r) => [r.augmentId, r.winRate, r.pickRate, r.games ?? 0]),
+    ])
+  ),
+})
+const fetchStats = async (id, retries) => {
+  try {
+    const r = await getJson(`${API}/api/public/hextech-aram/heroes/${id}/augment-stats`, {
+      retries,
+    })
+    if (r?.success && r.data?.groups) augmentStats[id] = slimStats(r.data)
+    else return false
+  } catch {
+    return false
+  }
+  return true
+}
+await mapLimit(championIds, async (id) => {
+  if (!(await fetchStats(id, 4))) statsFailed.push(id)
+})
+for (const id of statsFailed.splice(0)) {
+  if (!(await fetchStats(id, 5))) statsFailed.push(id)
+  await sleep(400)
+}
+console.log(
+  `  augment stats: ${Object.keys(augmentStats).length}` +
+    (statsFailed.length ? ` (missing: ${statsFailed.join(', ')})` : '')
+)
+
 // 3. guides (paged)
 const guides = await getJson(`${API}/api/public/hextech-aram/guides/bootstrap`)
 const guidesPage2 = await getJson(
@@ -190,5 +237,7 @@ writeFileSync(
 )
 
 writeFileSync(resolve(rawDir, 'cherry_by_id.json'), JSON.stringify(cherryById))
+
+writeFileSync(resolve(rawDir, 'augment-stats.json'), JSON.stringify(augmentStats))
 
 console.log(`capture complete (${requestCount} requests) — captured ${capturedAt}`)

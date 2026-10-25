@@ -8,10 +8,11 @@
  *   data/raw/cchappy-extra.json       guides page 2 + full message board
  *   data/raw/cherry_by_id.json        official English augment names (CommunityDragon)
  *   data/raw/translations.json        human-reviewed translations of the CN prose
+ *   data/raw/augment-stats.json       per-champion augment win/pick rates (optional)
  *
  * Output: public/data/*.json  (one index + one file per champion)
  */
-import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -22,6 +23,11 @@ const snapshot = raw('cchappy-data-full.json')
 const extra = raw('cchappy-extra.json')
 const cherry = raw('cherry_by_id.json')
 const tr = raw('translations.json')
+/* Upstream 4.0.1's per-champion augment leaderboard. Optional: snapshots taken
+ * before it existed simply have no rankings. */
+const augmentStats = existsSync(resolve(root, 'data/raw/augment-stats.json'))
+  ? raw('augment-stats.json')
+  : {}
 
 const enChampions = snapshot.english.champions
 const enItems = snapshot.english.items
@@ -428,6 +434,37 @@ for (const h of Object.values(heroDetails)) {
     }
   }
 }
+/* The leaderboard ranks ~125 augments per champion, far more than any build
+ * recommends, so add the rest to the shared index. Ranking files then carry
+ * only ids and numbers, and the dialog looks names, icons and text up here
+ * instead of repeating them in 173 files. */
+for (const champ of Object.values(augmentStats)) {
+  for (const rows of Object.values(champ.groups)) {
+    for (const [id] of rows) {
+      if (augmentIndex[id] || !cherry[String(id)]) continue
+      const official = cherry[String(id)]
+      const a = mapAugment({ id, name: official.nameTRA, rarity: official.rarity })
+      augmentIndex[id] = { id, name: a.name, icon: a.icon, rarity: a.rarity, desc: a.desc }
+    }
+  }
+}
+
+/* Per champion: { syncedAt, groups: { silver: [[id, winRate, pickRate, games]] } }.
+ * winRate is null when the sample was too small to report. */
+const statsDetails = {}
+for (const [id, champ] of Object.entries(augmentStats)) {
+  statsDetails[id] = {
+    syncedAt: champ.syncedAt,
+    dataVersion: champ.dataVersion,
+    groups: Object.fromEntries(
+      Object.entries(champ.groups).map(([rarity, rows]) => [
+        rarity,
+        rows.filter(([augId]) => augmentIndex[augId]),
+      ])
+    ),
+  }
+}
+
 const itemIndex = {}
 for (const h of Object.values(heroDetails)) {
   for (const b of h.builds) {
@@ -464,7 +501,12 @@ write('messages.json', messages)
 write('augments.json', augmentIndex)
 write('items.json', itemIndex)
 for (const [id, detail] of Object.entries(heroDetails)) {
-  write(`heroes/${id}.json`, detail)
+  write(`heroes/${id}.json`, { ...detail, hasAugmentStats: !!statsDetails[id] })
+}
+/* Separate from heroes/ so the build data opens without waiting on the table. */
+mkdirSync(resolve(outDir, 'augment-stats'), { recursive: true })
+for (const [id, stats] of Object.entries(statsDetails)) {
+  write(`augment-stats/${id}.json`, stats)
 }
 
 const missingTotal = Object.values(missing).reduce((n, v) => n + v.length, 0)
@@ -485,5 +527,6 @@ console.log(
   `built: ${champions.length} champions, ${Object.keys(heroDetails).length} detail files, ` +
     `${guides.length} guides, ${messages.length} messages, ` +
     `${Object.keys(assetManifest).length} icons to localise, ` +
-    `${Object.keys(augmentIndex).length} augments, ${Object.keys(itemIndex).length} items`
+    `${Object.keys(augmentIndex).length} augments, ${Object.keys(itemIndex).length} items, ` +
+    `${Object.keys(statsDetails).length} augment rankings`
 )
